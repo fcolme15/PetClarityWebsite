@@ -1,14 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Blank Template</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>PetClarity</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <header class="header">
+    <nav>
 
-  <b>Starting blank</b>
+      <div class="left-item">
+        <div class="icon-container">
+          <img src="./imgs/globeIcon.jpg" alt="icon" class="icon" />
+          <p class="icon-text">English</p>
+          <div class="dropdown" id="dropdownMenu">
+            <p>English</p>
+            <p>Spanish</p>
+            <p>French</p>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="middle-item">
+        <h1>PetClarity</h1>
+      </div>
+
+      <div class="right-item">
+        <div class="icon-container">
+          <img src="./imgs/dogIcon.png" alt="icon" class="icon" />
+          <p class="icon-text">Luna</p>
+          <div class="dropdown" id="dropdownMenu">
+            <p>Luna</p>
+            <p>Tank</p>
+            <p>Bean</p>
+          </div>
+        </div>
+      </div>
+
+    </nav>
+  </header>
+  
+
+  <main class="main-grid" id="layout">
+    <div class="left-box">Left Box</div>
+     
+    <div class="right-box">
+      <div class="top-box" id="topBox">
+        <div id="calendarView">📅 Calendar View</div>
+        <div id="listView" style="display: none;">📋 List View</div>
+        <button id="swapViewBtn">Switch to List View</button>
+      </div>
+      <div class="bottom-box" id="expandable">
+        Right Bottom Box
+        <button id="toggleBtn">Toggle Expand</button>
+      </div>
+    </div>
+  </main>
 
   <script src="main.js"></script>
 </body>
