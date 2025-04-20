@@ -12,6 +12,10 @@ body {
     flex-direction: column;
 }
 
+p{
+    font-size: 1.5rem;
+}
+
 /***** START Header styling *****/
 .header {
     padding: 0 20px;  /* Add outer padding to keep items from touching the sides */ 
@@ -123,27 +127,57 @@ nav div {
 
 /***** END Header styling *****/
 
-/***** START Body styling *****/
+/***** START Main Grid styling *****/
 
 main.main-grid {
     flex: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    padding: 1rem;
+    gap: 2rem;
+    padding: 2rem;
     background-color: #f4f4f4;
 }
   
 .left-box {
     background-color: lightcoral;
     padding: 1rem;
-    border-radius: 12px;
+    border-radius: 25px; /* Rounded corners (match right-box)*/
+    max-height: 83vh; /* 83% of the screen height (match right-box)*/
+    min-height: 83vh;
+    overflow-y: auto;
+}
+
+.info-container{
+    max-height: 80vh;
+    min-height: 80vh;
+    overflow-y: auto;
+    scrollbar-width: thin; /* For Firefox */
+    scrollbar-color: #888 transparent; /* For Firefox */
+}
+
+/* Adjust the scroll bar */
+/* Chrome, Edge, Safari */
+.info-container::-webkit-scrollbar {
+    width: 6px; /* thinner */
+}
+
+.info-container::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+.info-container::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+    border: 1px solid transparent; /* Keeps it clean */
 }
   
 .right-box {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    gap: 1rem;
+    gap: 2rem;
+    max-height: 83vh;  /* 83% of the screen height(match left-box) */
+    min-height: 83vh;
 }
   
 .top-box, .bottom-box {
@@ -151,7 +185,7 @@ main.main-grid {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    border-radius: 12px;
+    border-radius: 25px; /* Rounded corners (match left-box) */
 }
   
 .top-box {
@@ -174,6 +208,85 @@ main.main-grid {
 }
   
 /***** END Body styling *****/
+
+
+/***** START Main Left Box styling *****/
+.info-panel {
+    max-width: 100%;
+    margin: 0 auto;
+    background: #f9f9f9;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+}
+  
+.summary {
+    padding: 1rem;
+    background-color: #d9eafa;
+    height: 30vh;
+    overflow-y: auto;
+}
+  
+/* Each section */
+.open-text {
+    border-top: 1px solid #ddd;
+}
+  
+/* Title bar that you click */
+.open-text-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    cursor: pointer;
+    background: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.line-Separator{
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    font-size: 2rem;
+}
+  
+.open-text-title:hover {
+    background: #f0f0f0;
+}
+  
+.arrow {
+    transition: transform 0.4s ease;
+}
+  
+/* Content section */
+.open-text-content {
+    max-height: 0;
+    overflow: hidden;
+    padding: 0 1rem;
+    background-color: #f5f5f5;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    font-size: 0.95rem;
+    border-bottom: 1px solid black;
+    border-radius: 0 0 10px 10px;
+}
+  
+/* When open */
+.open-text.open .open-text-content {
+    max-height: fit-content;
+    padding: 1rem;
+}
+  
+/* Rotate arrow when open */
+.open-text.open .arrow {
+    transform: rotate(90deg);
+}
+  
+/***** END Main Left Box styling *****/
+
 
 
   /* Mobile */

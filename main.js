@@ -85,6 +85,20 @@ function initViewSwitcher() {
     });
 }
 //END View swap top right box
+
+
+//Start open text
+function initOpenTextSections() {
+    const sections = document.querySelectorAll('.open-text');
+  
+    sections.forEach(section => {
+      const title = section.querySelector('.open-text-title');
+      title.addEventListener('click', () => {
+        section.classList.toggle('open');
+      });
+    });
+}
+//End open text
   
 //Toggles a class on an element
 function toggleClass(element, className) {
@@ -102,6 +116,7 @@ function setDisplay(element, value) {
 //Initializes all listeners when the DOM is done loading
 document.addEventListener('DOMContentLoaded', () => {
     initIconDropdowns(); //Initialize nav drop downs(change pet & language)
-    initExpandableBox(); // Initialize expand/collapse behavior
-    initViewSwitcher();  // Initialize calendar/list view toggle
+    initExpandableBox(); //Initialize expand/collapse behavior
+    initViewSwitcher();  //Initialize calendar/list view toggle
+    initOpenTextSections(); //Initialize openText sections
 });
