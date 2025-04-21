@@ -13,7 +13,7 @@ body {
 }
 
 p{
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 /***** START Header styling *****/
@@ -24,15 +24,15 @@ p{
 
 /* Styling of title */
 .middle-item h1 {
-    font-size:3rem;
+    font-size:2rem;
     text-align:center; 
     line-height:1.5em; 
     padding-bottom:1.2rem; 
     font-family:"Playfair Display", serif; 
     text-transform:uppercase;
-    letter-spacing: .2rem; 
+    letter-spacing: .15rem; 
     color:#111;
-    padding-left: 29rem;
+    padding-left: 25rem;
 }
   
 /* Lines under pet clarity */    
@@ -73,21 +73,21 @@ nav div {
     display: flex;  /* Use flexbox to arrange items side by side */
     justify-content: center;  /* Keep content centered */
     align-items: center;  /* Vertically center the content */
-    gap: 1rem;  /* Space between the title and tabs */
+    gap: .5rem;  /* Space between the title and tabs */
     position: relative;  /* To allow proper positioning of items */
 }
 
 /* Styling for the tabs container */
 .tabs {
     display: flex;  /* Display tabs in a row */
-    gap: 1rem;  /* Space between tabs */
+    gap: .5rem;  /* Space between tabs */
 }
 
 /* Styling for individual tabs */
 .tab {
     text-decoration: none;  /* Remove underline */
     color: #111;  /* Tab text color */
-    font-size: 2rem;  /* Slightly smaller than the title */
+    font-size: 1.5rem;  /* Slightly smaller than the title */
     padding: 0.5rem 1rem;  /* Padding to make tabs look like buttons */
     border-radius: 5px;  /* Rounded corners */
     transition: background-color 0.4s ease;  /* Smooth background color change */
@@ -107,8 +107,8 @@ nav div {
   
 /* Circular image styling */
 .icon {
-    width: 100px;
-    height: 100px;
+    width: 3em;
+    height: 3rem;
     border-radius: 50%;  /* Make the image circular */
     object-fit: cover;
     cursor: pointer;  /* Show pointer when hovering over the image */
@@ -131,7 +131,7 @@ nav div {
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 150px;
+    width: 6rem;
     padding: 10px;
     z-index: 15;
 }

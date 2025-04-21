@@ -13,7 +13,7 @@ body {
 }
 
 p{
-    font-size: 1.5rem;
+    font-size: 1rem;
 }
 
 /***** START Header styling *****/
@@ -24,15 +24,15 @@ p{
 
 /* Styling of title */
 .middle-item h1 {
-    font-size:3rem;
+    font-size:2rem;
     text-align:center; 
     line-height:1.5em; 
     padding-bottom:1.2rem; 
     font-family:"Playfair Display", serif; 
     text-transform:uppercase;
-    letter-spacing: .2rem; 
+    letter-spacing: .15rem; 
     color:#111;
-    padding-left: 29rem;
+    padding-left: 25rem;
 }
   
 /* Lines under pet clarity */    
@@ -73,21 +73,21 @@ nav div {
     display: flex;  /* Use flexbox to arrange items side by side */
     justify-content: center;  /* Keep content centered */
     align-items: center;  /* Vertically center the content */
-    gap: 1rem;  /* Space between the title and tabs */
+    gap: .5rem;  /* Space between the title and tabs */
     position: relative;  /* To allow proper positioning of items */
 }
 
 /* Styling for the tabs container */
 .tabs {
     display: flex;  /* Display tabs in a row */
-    gap: 1rem;  /* Space between tabs */
+    gap: .5rem;  /* Space between tabs */
 }
 
 /* Styling for individual tabs */
 .tab {
     text-decoration: none;  /* Remove underline */
     color: #111;  /* Tab text color */
-    font-size: 2rem;  /* Slightly smaller than the title */
+    font-size: 1.5rem;  /* Slightly smaller than the title */
     padding: 0.5rem 1rem;  /* Padding to make tabs look like buttons */
     border-radius: 5px;  /* Rounded corners */
     transition: background-color 0.4s ease;  /* Smooth background color change */
@@ -107,8 +107,8 @@ nav div {
   
 /* Circular image styling */
 .icon {
-    width: 100px;
-    height: 100px;
+    width: 3em;
+    height: 3rem;
     border-radius: 50%;  /* Make the image circular */
     object-fit: cover;
     cursor: pointer;  /* Show pointer when hovering over the image */
@@ -131,7 +131,7 @@ nav div {
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 150px;
+    width: 6rem;
     padding: 10px;
     z-index: 15;
 }
@@ -156,8 +156,8 @@ main.main-grid {
     flex: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
-    padding: 2rem;
+    gap: 1rem;
+    padding: 1rem;
     background-color: #f4f4f4;
 }
   
@@ -165,15 +165,16 @@ main.main-grid {
     background-color: lightcoral;
     padding: 1rem;
     border-radius: 25px; /* Rounded corners (match right-box)*/
-    max-height: 83vh; /* 83% of the screen height (match right-box)*/
-    min-height: 83vh;
-    overflow-y: auto;
+    max-height: 75vh; /* 75% of the screen height (match right-box)*/
+    min-height: 75vh;
+    overflow-y: hidden;
 }
 
 .info-container{
-    max-height: 80vh;
-    min-height: 80vh;
+    max-height: 74vh;
+    min-height: 74vh;
     overflow-y: auto;
+    padding-bottom: 4vh;
     scrollbar-width: thin; /* For Firefox */
     scrollbar-color: #888 transparent; /* For Firefox */
 }
@@ -198,9 +199,9 @@ main.main-grid {
 .right-box {
     display: grid;
     grid-template-rows: 1fr 1fr;
-    gap: 2rem;
-    max-height: 83vh;  /* 83% of the screen height(match left-box) */
-    min-height: 83vh;
+    gap: 1em;
+    max-height: 75vh;  /* 75% of the screen height(match left-box) */
+    min-height: 75vh;
 }
   
 .top-box, .bottom-box {
@@ -217,22 +218,22 @@ main.main-grid {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    max-height: 39.5vh; 
-    min-height: 39.5vh;
+    max-height: 37vh; 
+    min-height: 37vh;
 }
   
 .bottom-box {
     background-color: turquoise;
     transition: all 0.3s ease;
-    max-height: 39.5vh; 
-    min-height: 39.5vh;
+    max-height: 37vh; 
+    min-height: 37vh;
 }
   
 /* Expand the bottom box to take up the whole two grid spots */
 .bottom-box.expanded {
     grid-row: span 2;
-    max-height: 83vh; 
-    min-height: 83vh;
+    max-height: 75vh; 
+    min-height: 75vh;
 }
   
 /* Hides the top box when expanded */
@@ -249,7 +250,6 @@ main.main-grid {
     margin: 0 auto;
     background: #f9f9f9;
     border-radius: 12px;
-    overflow: hidden;
     box-shadow: 0 4px 12px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
@@ -258,8 +258,8 @@ main.main-grid {
 .summary {
     padding: 1rem;
     background-color: #d9eafa;
-    height: 30vh;
-    overflow-y: auto;
+    height: 20vh;
+    /* overflow-y: auto; */
 }
   
 /* Each section */
@@ -272,7 +272,7 @@ main.main-grid {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: .75rem;
     cursor: pointer;
     background: #fff;
     font-weight: 600;
@@ -283,8 +283,8 @@ main.main-grid {
 .line-Separator{
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
-    font-size: 2rem;
+    padding: 1.5rem;
+    font-size: 1rem;
 }
   
 .open-text-title:hover {
@@ -310,7 +310,7 @@ main.main-grid {
 /* When open */
 .open-text.open .open-text-content {
     max-height: fit-content;
-    padding: 1rem;
+    padding: .5rem;
 }
   
 /* Rotate arrow when open */
@@ -329,7 +329,7 @@ main.main-grid {
     padding: 6px 10px;
     background: #333;
     color: #fff;
-    font-size: 0.75rem;
+    font-size: 0.6rem;
     border-radius: 6px;
     white-space: nowrap;
     z-index: 10;
@@ -342,13 +342,13 @@ main.main-grid {
 }
 
 #calendarContainer {
-    transform: scale(.95,0.8); 
+    transform: scale(.85,0.7); 
     transform-origin: top left;
     margin: 0 auto;  
 }
 
 .fc {
-    font-size: 0.85rem;
+    font-size: 0.75rem;
 }
 
 .fc-daygrid-day-number {
@@ -359,22 +359,20 @@ main.main-grid {
     font-size: 0.75rem;
     padding: 2px 4px;
 }
-  
-  
 
 /***** END Calendar styling *****/
 
 /***** START ListView styling *****/
 .title {
-    font-size: 3rem;
+    font-size: 1.5rem;
     font-weight: bold;
     margin: 0 0 0.5rem 0;
     padding-left: 1rem;
   }
   
 .img-button {
-    width: 3rem;
-    height: 3rem;
+    width: 2.2rem;
+    height: 2.2rem;
     border: none;
     cursor: pointer;
   
@@ -388,15 +386,14 @@ main.main-grid {
   
 .info-list {
     margin-top: 0.5rem;
-    padding-left: 2rem;
     list-style-type: disc;
-    font-size: 1.5rem;
-    padding-top: .3rem;
-    padding-left: 3rem;
+    font-size: 1.25rem;
+    padding-top: .2rem;
+    padding-left: 2rem;
 }
 
 .info-list li {
-    margin-bottom: 1rem;
+    margin-bottom: .75rem;
 }
 
 #listView{
