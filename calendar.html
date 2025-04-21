@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Interactive Calendar</title>
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="calendarStyle.css" />
+  </style>
+</head>
+<body>
+  <header class="header">
+    <nav>
+
+      <div class="left-item">
+        <div class="icon-container">
+          <img src="./imgs/globeIcon.jpg" alt="icon" class="icon" />
+          <p class="icon-text">English</p>
+          <div class="dropdown" id="dropdownMenu">
+            <p>English</p>
+            <p>Spanish</p>
+            <p>French</p>
+          </div>
+        </div>
+      </div>
+
+      
+      <div class="middle-item">
+        <h1>PetClarity</h1>
+        <div class="tabs">
+          <a href="indexEng.html" class="tab">Dashboard</a>
+          <a href="calendar.html" class="tab">Calendar</a>
+          <a href="page3.html" class="tab">Chat</a>
+        </div>
+      </div>
+
+      <div class="right-item">
+        <div class="icon-container">
+          <img src="./imgs/dogIcon.png" alt="icon" class="icon" />
+          <p class="icon-text">Luna</p>
+          <div class="dropdown" id="dropdownMenu">
+            <p>Luna</p>
+            <p>Tank</p>
+            <p>Bean</p>
+          </div>
+        </div>
+      </div>
+
+    </nav>
+  </header>
+
+  <div id="calendarView">
+    <div id='calendarContainer'></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
+
+  <script src="calendarJ.js"></script>
+</body>
+</html>
+

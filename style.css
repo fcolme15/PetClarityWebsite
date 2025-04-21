@@ -32,6 +32,7 @@ p{
     text-transform:uppercase;
     letter-spacing: .2rem; 
     color:#111;
+    padding-left: 29rem;
 }
   
 /* Lines under pet clarity */    
@@ -69,12 +70,33 @@ nav div {
 }
   
 .middle-item {
-    text-align: center;  
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    font-size: 2rem;
+    display: flex;  /* Use flexbox to arrange items side by side */
+    justify-content: center;  /* Keep content centered */
+    align-items: center;  /* Vertically center the content */
+    gap: 1rem;  /* Space between the title and tabs */
+    position: relative;  /* To allow proper positioning of items */
+}
+
+/* Styling for the tabs container */
+.tabs {
+    display: flex;  /* Display tabs in a row */
+    gap: 1rem;  /* Space between tabs */
+}
+
+/* Styling for individual tabs */
+.tab {
+    text-decoration: none;  /* Remove underline */
+    color: #111;  /* Tab text color */
+    font-size: 2rem;  /* Slightly smaller than the title */
+    padding: 0.5rem 1rem;  /* Padding to make tabs look like buttons */
+    border-radius: 5px;  /* Rounded corners */
+    transition: background-color 0.4s ease;  /* Smooth background color change */
+    font-family:"Playfair Display", serif; 
     font-weight: bold;
+}
+
+.tab:hover {
+    text-decoration: underline;
 }
   
 /* Styling for the container */
