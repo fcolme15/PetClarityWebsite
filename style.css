@@ -53,7 +53,7 @@ p{
     content: '\00a7'; font-size:30px; line-height:40px; color:#2d7eee;
     font-weight:400; z-index: 5;
     display:block;
-    background-color:#f8f8f8;
+    background-color: #f4f4f4;  
 }
   
 nav {
@@ -111,6 +111,7 @@ nav div {
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
     width: 150px;
     padding: 10px;
+    z-index: 15;
 }
   
 /* Styling for the dropdown menu text */
@@ -184,22 +185,32 @@ main.main-grid {
     padding: 1rem;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     border-radius: 25px; /* Rounded corners (match left-box) */
 }
   
 .top-box {
     background-color: lightskyblue;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    max-height: 39.5vh; 
+    min-height: 39.5vh;
 }
   
 .bottom-box {
     background-color: turquoise;
     transition: all 0.3s ease;
+    max-height: 39.5vh; 
+    min-height: 39.5vh;
 }
   
 /* Expand the bottom box to take up the whole two grid spots */
 .bottom-box.expanded {
     grid-row: span 2;
+    max-height: 83vh; 
+    min-height: 83vh;
 }
   
 /* Hides the top box when expanded */
@@ -287,7 +298,97 @@ main.main-grid {
   
 /***** END Main Left Box styling *****/
 
+/***** START Calendar styling *****/
+.tooltip {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    padding: 6px 10px;
+    background: #333;
+    color: #fff;
+    font-size: 0.75rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    z-index: 10;
+    pointer-events: none;
+}
 
+#calendarView{
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#calendarContainer {
+    transform: scale(.95,0.8); 
+    transform-origin: top left; /* keeps it aligned to the top-left */
+    margin: 0 auto;  
+}
+
+.fc {
+    font-size: 0.85rem;
+}
+
+.fc-daygrid-day-number {
+    font-size: 0.75rem;
+}
+  
+.fc-event {
+    font-size: 0.75rem;
+    padding: 2px 4px;
+}
+  
+  
+
+/***** END Calendar styling *****/
+
+/***** START ListView styling *****/
+.title {
+    font-size: 3rem;
+    font-weight: bold;
+    margin: 0 0 0.5rem 0;
+    padding-left: 1rem;
+  }
+  
+.img-button {
+    width: 3rem;
+    height: 3rem;
+    /* border-radius: 40%; makes the button round */
+    border: none;
+    cursor: pointer;
+  
+    background-image: url('./imgs/checkListIcon.png'); /* your local file path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: lightskyblue;
+}
+  
+  
+.info-list {
+    margin-top: 0.5rem;
+    padding-left: 2rem;
+    list-style-type: disc;
+    font-size: 1.5rem;
+    padding-top: .3rem;
+    padding-left: 3rem;
+}
+
+.info-list li {
+    margin-bottom: 1rem; /* Adds space between the list items */
+}
+
+#listView{
+    justify-content: flex-start;
+}
+
+.top-Right-Title{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+/***** END ListView styling *****/
 
   /* Mobile */
 @media (max-width: 767px) {

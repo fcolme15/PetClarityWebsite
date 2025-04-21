@@ -4,7 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PetClarity</title>
+  
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+
+
   <link rel="stylesheet" href="style.css" />
+  
+  
+
 </head>
 <body>
   <header class="header">
@@ -130,13 +137,26 @@
       
       
     </div>
-
      
     <div class="right-box">
       <div class="top-box" id="topBox">
-        <div id="calendarView">📅 Calendar View</div>
-        <div id="listView" style="display: none;">📋 List View</div>
-        <button id="swapViewBtn">Switch to List View</button>
+        <div class="top-Right-Title">
+          <h2 class="title">🗓️ Calendar View</h2>
+          <button id="swapViewBtn" class="img-button"></button>
+        </div>
+        
+        <div id="calendarView">
+          <div id='calendarContainer'></div>
+        </div>
+        <div id="listView" style="display: none;">
+          <ul class="info-list">
+            <li>Doctor Visit: April 22, 2025</li>
+            <li>Doctor Visit: May 6, 2025</li>
+            <li>Medicine Reminder: April 21, 8:00 AM</li>
+            <li>Medicine Reminder: April 21, 8:00 PM</li>
+          </ul>
+        </div>
+        
       </div>
       <div class="bottom-box" id="expandable">
         Right Bottom Box
@@ -144,6 +164,9 @@
       </div>
     </div>
   </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
+
 
   <script src="main.js"></script>
 </body>

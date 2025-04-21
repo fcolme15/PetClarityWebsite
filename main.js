@@ -71,17 +71,26 @@ function initViewSwitcher() {
     const listView = document.getElementById("listView"); //List content
     
     if (!swapBtn || !calendarView || !listView) return; //Error null element
+
+    const title = swapBtn.previousElementSibling; // Gets the <h2> element (sibling before button)
   
     swapBtn.addEventListener("click", () => {
       //Check which view is currently visible
       const showingCalendar = calendarView.style.display !== "none";  
   
-      //Show or hide the views accordingly
-      setDisplay(calendarView, showingCalendar ? "none" : "block");
-      setDisplay(listView, showingCalendar ? "block" : "none");
-  
-      //Update the button text to reflect the new state
-      swapBtn.textContent = showingCalendar ? "Calendar View": "List View";
+      // Toggle display
+      calendarView.style.display = showingCalendar ? "none" : "block";
+      listView.style.display = showingCalendar ? "block" : "none";
+
+      // Update <h2> text content
+      if (title) {
+        title.textContent = showingCalendar ? "📋 List View" : "🗓️ Calendar View";
+      }
+
+      // Update button background image
+      swapBtn.style.backgroundImage = showingCalendar
+          ?  "url('./imgs/calendarIcon.webp')"
+          :  "url('./imgs/checkListIcon.png')"; 
     });
 }
 //END View swap top right box
@@ -100,6 +109,66 @@ function initOpenTextSections() {
 }
 //End open text
   
+
+//Start calendar
+// Calendar Initialization Function
+function initInteractiveCalendar(containerId, eventsData = []) {
+    const calendarEl = document.getElementById(containerId);
+    if (!calendarEl) {
+      console.warn(`Calendar container with ID "${containerId}" not found.`);
+      return;
+    }
+  
+    const calendar = new FullCalendar.Calendar(calendarEl, {
+      initialView: 'dayGridMonth',
+      height: 'auto',
+      contentHeight: 'auto',
+      events: eventsData,
+      eventDidMount: function(info) {
+        const icon = info.event.extendedProps.icon;
+  
+        // Prepend icon if provided
+        if (icon) {
+          info.el.innerHTML = `${icon} ${info.el.innerHTML}`;
+        }
+  
+        // Create tooltip
+        const tooltip = document.createElement('div');
+        tooltip.textContent = info.event.extendedProps.description || '';
+        tooltip.className = 'tooltip';
+        info.el.appendChild(tooltip);
+  
+        // Show/hide on hover
+        info.el.addEventListener('mouseenter', () => {
+          tooltip.style.display = 'block';
+        });
+        info.el.addEventListener('mouseleave', () => {
+          tooltip.style.display = 'none';
+        });
+      }
+    });
+  
+    calendar.render();
+}
+  
+// Example Events Data (replace or fetch dynamically as needed)
+const sampleCalendarEvents = [
+    {
+      title: 'Checkup',
+      start: '2025-04-22',
+      description: 'Annual physical with Dr. Smith',
+      icon: '🏥'
+    },
+    {
+      title: 'Take meds',
+      start: '2025-04-24',
+      description: 'Morning meds: Ibuprofen',
+      icon: '💊'
+    }
+];
+  
+
+//End calendar
 //Toggles a class on an element
 function toggleClass(element, className) {
     element.classList.toggle(className);
@@ -113,10 +182,12 @@ function setDisplay(element, value) {
     }
 }
 
-//Initializes all listeners when the DOM is done loading
+// Initialize all listeners when the DOM is done loading
 document.addEventListener('DOMContentLoaded', () => {
-    initIconDropdowns(); //Initialize nav drop downs(change pet & language)
-    initExpandableBox(); //Initialize expand/collapse behavior
-    initViewSwitcher();  //Initialize calendar/list view toggle
-    initOpenTextSections(); //Initialize openText sections
+    initIconDropdowns(); // Initialize nav drop downs (change pet & language)
+    initExpandableBox(); // Initialize expand/collapse behavior
+    initViewSwitcher(); // Initialize calendar/list view toggle
+    initOpenTextSections(); // Initialize openText sections
+    initInteractiveCalendar('calendarContainer', sampleCalendarEvents); // Initialize the calendar
 });
+  
