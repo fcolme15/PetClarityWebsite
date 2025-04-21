@@ -4,6 +4,8 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>PetClarity</title>
+
+  <script src="https://unpkg.com/@cometchat-pro/chat@3.0.0/CometChat.js"></script>
   
   <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
 
@@ -35,7 +37,7 @@
         <div class="tabs">
           <a href="indexEng.html" class="tab">Dashboard</a>
           <a href="calendar.html" class="tab">Calendar</a>
-          <a href="page3.html" class="tab">Chat</a>
+          <a href="chat.html" class="tab">Chat</a>
         </div>
       </div>
 
@@ -164,15 +166,27 @@
         
       </div>
       <div class="bottom-box" id="expandable">
-        Right Bottom Box
+        
         <button id="toggleBtn">Toggle Expand</button>
+        <div>
+          <h2>Users</h2>
+          <div id="usersList"></div>
+        </div>
+  
+        <div>
+          <h2>Chat</h2>
+          <div id="chatWindow"></div>
+          <input type="text" id="messageInput" placeholder="Type a message..." />
+          <button id="sendBtn" >Send</button>
+        </div>
+
+
       </div>
     </div>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
-
-  <script src="main.js"></script>
+  <script type="module" src="main.js"></script>
 </body>
 </html>

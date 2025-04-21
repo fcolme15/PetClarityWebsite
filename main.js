@@ -1,4 +1,4 @@
-
+import {COMETCHAT_CONSTANTS} from "./const.js"
 //START Icon Dropdowns
 
 //Initializes all icon dropdowns on the page
@@ -182,6 +182,128 @@ function setDisplay(element, value) {
     }
 }
 
+//START CometChat
+
+const appID = COMETCHAT_CONSTANTS.APP_ID;  
+const region = COMETCHAT_CONSTANTS.REGION; 
+const authKey = COMETCHAT_CONSTANTS.AUTH_KEY; 
+
+let currentChatUID = null;
+
+
+function initializeCometChat() {
+  const appSetting = new CometChat.AppSettingsBuilder()
+    .subscribePresenceForAllUsers()
+    .setRegion(region)
+    .build();
+
+  return CometChat.init(appID, appSetting);
+}
+
+
+function loginUser(uid) {
+  return CometChat.login(uid, authKey);
+}
+
+//Setup CometChat
+function setupCometChat(uid) {
+  initializeCometChat()
+    .then(() => loginUser(uid))
+    .then(user => {
+        console.log("User logged in:", user);
+        addMessageListener("chat_listener");
+        listUsers();  // Fetch list of users
+    })
+    .catch(console.error);
+}
+
+//List users
+function listUsers() {
+  const usersRequest = new CometChat.UsersRequestBuilder()
+      .setLimit(10)
+      .build();
+
+  usersRequest.fetchNext().then(users => {
+      const usersListDiv = document.getElementById("usersList");
+      usersListDiv.innerHTML = "";
+
+      users.forEach(user => {
+          const userBtn = document.createElement("button");
+          userBtn.innerText = user.name;
+          userBtn.onclick = () => {
+              currentChatUID = user.uid;
+              document.getElementById("chatWindow").innerHTML = "";
+              fetchMessages(user.uid, CometChat.RECEIVER_TYPE.USER);
+          };
+          usersListDiv.appendChild(userBtn);
+      });
+  });
+}
+
+//Fetch previous messages
+function fetchMessages(receiverID, receiverType) {
+  const messagesRequest = new CometChat.MessagesRequestBuilder()
+      .setUID(receiverID)
+      .setLimit(30)
+      .build();
+
+  messagesRequest.fetchPrevious().then(messages => {
+      messages.forEach(msg => displayMessage(msg));
+  });
+}
+
+//Display message in chat window
+function displayMessage(message) {
+  const chatWindow = document.getElementById("chatWindow");
+  const messageDiv = document.createElement("div");
+  messageDiv.innerText = `${message.sender.name}: ${message.text}`;
+  chatWindow.appendChild(messageDiv);
+}
+
+//Send a message
+function sendUserMessage() {
+  const text = document.getElementById("messageInput").value;
+  if (!currentChatUID || !text) return;
+
+  const msg = new CometChat.TextMessage(
+      currentChatUID,
+      text,
+      CometChat.RECEIVER_TYPE.USER
+  );
+
+  CometChat.sendMessage(msg).then(message => {
+      displayMessage(message);
+      document.getElementById("messageInput").value = "";
+  });
+}
+
+//Add message listener
+function addMessageListener(listenerID) {
+    CometChat.addMessageListener(
+        listenerID,
+        new CometChat.MessageListener({
+            onTextMessageReceived: message => {
+                if (message.sender.uid === currentChatUID) {
+                    displayMessage(message);
+                }
+            }
+        })
+    );
+}
+
+function attachClickHandler(id, callback) {
+  const element = document.getElementById(id);
+  if (element) {
+    element.addEventListener('click', callback);
+  } else {
+    console.warn(`Element with ID "${id}" not found.`);
+  }
+}
+
+//END CometChat
+
+
+
 // Initialize all listeners when the DOM is done loading
 document.addEventListener('DOMContentLoaded', () => {
     initIconDropdowns(); // Initialize nav drop downs (change pet & language)
@@ -189,5 +311,9 @@ document.addEventListener('DOMContentLoaded', () => {
     initViewSwitcher(); // Initialize calendar/list view toggle
     initOpenTextSections(); // Initialize openText sections
     initInteractiveCalendar('calendarContainer', sampleCalendarEvents); // Initialize the calendar
+    const uid = "cometchat-uid-1";  
+    setupCometChat(uid);
+    attachClickHandler('sendBtn', sendUserMessage);
+    
 });
   
