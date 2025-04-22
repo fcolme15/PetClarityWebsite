@@ -176,8 +176,12 @@ main.main-grid {
 .info-container{
     max-height: 74vh;
     min-height: 74vh;
+    /* min-width: 42vw;  */ /*Maybe restrict the width of box*/
+    /* max-width: 42vw; */
     overflow-y: auto;
+    overflow-x: hidden;
     padding-bottom: 4vh;
+    /* border-radius: 25px; */
     scrollbar-width: thin; /* For Firefox */
     scrollbar-color: #888 transparent; /* For Firefox */
 }
@@ -267,7 +271,7 @@ main.main-grid {
 
 /* Section for date dropdown menu */
 .dropdown-container {
-    padding-left: 29rem;
+    padding-left: 27rem;
     margin-top: -2rem;
     text-align: left;
     position: relative; /* Used for positioning the dropdown */
