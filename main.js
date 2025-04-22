@@ -27,6 +27,24 @@ function initIconDropdowns() {
     //Add a global listener to close dropdowns when clicking outside 
     window.addEventListener('click', handleOutsideClick);
 }
+
+// Initialize date dropdown in summary section
+function initDateDropdown() {
+  const button = document.querySelector('.dropbtn');
+  const dropdown = document.getElementById('dateDropdownMenu');
+
+  function toggleDropdown(event){
+    event.stopPropagation();
+    closeAllDropdownsExcept(dropdown);
+    dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
+  }
+
+  button.addEventListener('click', toggleDropdown);
+
+  window.addEventListener('click', () => {
+    dropdown.style.display = 'none';
+  });
+}
   
 //Closes all dropdowns excluding the one clicked
 function closeAllDropdownsExcept(exception = null) {
@@ -124,6 +142,7 @@ function initInteractiveCalendar(containerId, eventsData = []) {
       height: 'auto',
       contentHeight: 'auto',
       events: eventsData,
+      eventColor: '#E83A0E',
       eventDidMount: function(info) {
         const icon = info.event.extendedProps.icon;
   
@@ -307,6 +326,7 @@ function attachClickHandler(id, callback) {
 // Initialize all listeners when the DOM is done loading
 document.addEventListener('DOMContentLoaded', () => {
     initIconDropdowns(); // Initialize nav drop downs (change pet & language)
+    initDateDropdown(); // Initialize date drop downs (found in summary section)
     initExpandableBox(); // Initialize expand/collapse behavior
     initViewSwitcher(); // Initialize calendar/list view toggle
     initOpenTextSections(); // Initialize openText sections

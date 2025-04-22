@@ -63,18 +63,28 @@
       <div class="info-container">
         <div class="info-panel">
           <div class="summary">
-            <h2>Summary</h2>
-            <p>This is the summary information...</p>
-            <p>This is the summary information...</p>
-            <p>This is the summary information...</p>
-            <p>This is the summary information...</p>
-            <p>This is the summary information...</p>
+            <h2 style="display: inline;">Visit Summary</h2>
+            
+            <div class="dropdown-container">
+              <label>Visit On</label>
+              <button class="dropbtn">01/15/25 <span class="arrow">&#9654;</span><br>Sprained Ankle</button>
+              <div class="dropdown" id="dateDropdownMenu">
+                <p>01/10/25<br>Wellness Check</p>
+                <p>02/19/25<br>Swallowed Toy</p>
+                <p>03/05/25<br>Anxiety</p>
+              </div>
+            </div>
+
+            <div id="dogSummary">
+              <span>Breed: Boxer</span>
+              <span style="margin-left: 5rem">Age: 2 Years</span><br>
+              <span>Weight: 61 Pounds</span>
+              <span style="margin-left: 2.4rem">Birthday: 1/11/23</span><br>
+            </div>
           </div>
   
-          <div class="line-Separator">_____________________________________________________________</div>
-        
           <div class="open-text">
-            <div class="open-text-title">
+            <div class="open-text-title" id="evalTab">
               <span>Evaluation</span>
               <span class="arrow">&#9654;</span>
             </div>
@@ -82,7 +92,7 @@
               <p>This is the evaluation content...</p>
               <p>This is the evaluation content...</p>
               <p>This is the evaluation content...</p>
-              <p>This is the evaluation content...</p>
+              <p>This is the <dfn title="Evaluation: the making of a judgment about the amount, number, or value of something; assessment">evaluation</dfn> content...</p>
               <p>This is the evaluation content...</p>
               <p>This is the evaluation content...</p>
               <p>This is the evaluation content...</p>
@@ -94,14 +104,14 @@
           </div>
         
           <div class="open-text">
-            <div class="open-text-title">
+            <div class="open-text-title" id="medTab">
               <span>Medication</span>
               <span class="arrow">&#9654;</span>
             </div>
             <div class="open-text-content">
               <p>This is the medication content...</p>
               <p>This is the medication content...</p>
-              <p>This is the medication content...</p>
+              <p>This is the <dfn title="Medication: a substance used for medical treatment, especially a medicine or drug.">medication</dfn> content...</p>
               <p>This is the medication content...</p>
               <p>This is the medication content...</p>
               <p>This is the medication content...</p>
@@ -115,7 +125,7 @@
           </div>
         
           <div class="open-text">
-            <div class="open-text-title">
+            <div class="open-text-title" id="treatTab">
               <span>Treatment</span>
               <span class="arrow">&#9654;</span>
             </div>
@@ -127,7 +137,7 @@
               <p>This is the treatment content...</p>
               <p>This is the treatment content...</p>
               <p>This is the treatment content...</p>
-              <p>This is the treatment content...</p>
+              <p>This is the <dfn title="Treatment: the manner in which someone behaves toward or deals with someone or something.">treatment</dfn> content...</p>
               <p>This is the treatment content...</p>
               <p>This is the treatment content...</p>
               <p>This is the treatment content...</p>

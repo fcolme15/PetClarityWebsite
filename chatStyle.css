@@ -1,6 +1,7 @@
 /***** General Styling *****/
 * {
     box-sizing: border-box;
+    
     margin: 0;
     padding: 0;
 }
@@ -19,7 +20,7 @@ p{
 /***** START Header styling *****/
 .header {
     padding: 0 20px;  /* Add outer padding to keep items from touching the sides */ 
-    background-color: #f4f4f4;  
+    background-color: #FFFFFF;  
 }
 
 /* Styling of title */
@@ -31,7 +32,7 @@ p{
     font-family:"Playfair Display", serif; 
     text-transform:uppercase;
     letter-spacing: .15rem; 
-    color:#111;
+    color:#262524;
     padding-left: 25rem;
 }
   
@@ -51,10 +52,10 @@ p{
 .middle-item h1:after {
     position:absolute;
     width:40px; height:40px; left:50%; margin-left:-20px; bottom:0px;
-    content: '\00a7'; font-size:30px; line-height:40px; color:#2d7eee;
+    content: '\00a7'; font-size:30px; line-height:40px; color:#E83A0E;
     font-weight:400; z-index: 5;
     display:block;
-    background-color: #f4f4f4;  
+    background-color: #FFFFFF;  
 }
   
 nav {
@@ -86,7 +87,7 @@ nav div {
 /* Styling for individual tabs */
 .tab {
     text-decoration: none;  /* Remove underline */
-    color: #111;  /* Tab text color */
+    color: #262524;  /* Tab text color */
     font-size: 1.5rem;  /* Slightly smaller than the title */
     padding: 0.5rem 1rem;  /* Padding to make tabs look like buttons */
     border-radius: 5px;  /* Rounded corners */
@@ -127,7 +128,7 @@ nav div {
     top: 120%;  /* Positions the dropdown below the icon */
     left: 50%;
     transform: translateX(-50%);  /* Centers the dropdown horizontally */
-    background-color: #fff;
+    background-color: #FFFFFF;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -145,7 +146,7 @@ nav div {
 
 /* Add hover effect to items */
 .dropdown p:hover {
-    background-color: #f0f0f0;  /* Add hover effect for dropdown items */
+    background-color: #FFFFFF;  /* Add hover effect for dropdown items */
 }
 
 /***** END Header styling *****/

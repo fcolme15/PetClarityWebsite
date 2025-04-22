@@ -19,7 +19,7 @@ p{
 /***** START Header styling *****/
 .header {
     padding: 0 20px;  /* Add outer padding to keep items from touching the sides */ 
-    background-color: #f4f4f4;  
+    background-color: #FFFFFF;  
 }
 
 /* Styling of title */
@@ -29,9 +29,10 @@ p{
     line-height:1.5em; 
     padding-bottom:1.2rem; 
     font-family:"Playfair Display", serif; 
+    font-weight:bolder;
     text-transform:uppercase;
     letter-spacing: .15rem; 
-    color:#111;
+    color:#262524;
     padding-left: 25rem;
 }
   
@@ -51,10 +52,10 @@ p{
 .middle-item h1:after {
     position:absolute;
     width:40px; height:40px; left:50%; margin-left:-20px; bottom:0px;
-    content: '\00a7'; font-size:30px; line-height:40px; color:#2d7eee;
+    content: '\00a7'; font-size:30px; line-height:40px; color:#E83A0E;
     font-weight:400; z-index: 5;
     display:block;
-    background-color: #f4f4f4;  
+    background-color: #FFFFFF;  
 }
   
 nav {
@@ -81,12 +82,13 @@ nav div {
 .tabs {
     display: flex;  /* Display tabs in a row */
     gap: .5rem;  /* Space between tabs */
+    padding: 0rem 0rem 1rem 0rem;
 }
 
 /* Styling for individual tabs */
 .tab {
     text-decoration: none;  /* Remove underline */
-    color: #111;  /* Tab text color */
+    color: #262524;  /* Tab text color */
     font-size: 1.5rem;  /* Slightly smaller than the title */
     padding: 0.5rem 1rem;  /* Padding to make tabs look like buttons */
     border-radius: 5px;  /* Rounded corners */
@@ -127,7 +129,7 @@ nav div {
     top: 120%;  /* Positions the dropdown below the icon */
     left: 50%;
     transform: translateX(-50%);  /* Centers the dropdown horizontally */
-    background-color: #fff;
+    background-color: #FFFFFF;
     border: 1px solid #ddd;
     border-radius: 5px;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
@@ -141,11 +143,12 @@ nav div {
     margin: 0;
     padding: 8px;
     cursor: pointer;
+    border-bottom: 1px solid #ddd;
 }
 
 /* Add hover effect to items */
 .dropdown p:hover {
-    background-color: #f0f0f0;  /* Add hover effect for dropdown items */
+    background-color: #FFFFFF;  /* Add hover effect for dropdown items */
 }
 
 /***** END Header styling *****/
@@ -158,11 +161,11 @@ main.main-grid {
     grid-template-columns: 1fr 1fr;
     gap: 1rem;
     padding: 1rem;
-    background-color: #f4f4f4;
+    background-color: #FFFFFF;
 }
   
 .left-box {
-    background-color: lightcoral;
+    background-color: #E82A0E;
     padding: 1rem;
     border-radius: 25px; /* Rounded corners (match right-box)*/
     max-height: 75vh; /* 75% of the screen height (match right-box)*/
@@ -213,7 +216,7 @@ main.main-grid {
 }
   
 .top-box {
-    background-color: lightskyblue;
+    background-color: #F0EADA;
     padding: 1rem;
     display: flex;
     flex-direction: column;
@@ -223,7 +226,7 @@ main.main-grid {
 }
   
 .bottom-box {
-    background-color: turquoise;
+    background-color: #202B3B;
     transition: all 0.3s ease;
     max-height: 37vh; 
     min-height: 37vh;
@@ -257,16 +260,45 @@ main.main-grid {
   
 .summary {
     padding: 1rem;
-    background-color: #d9eafa;
-    height: 20vh;
+    background-color: #FFFFFF;
+    height: 15vh;
     /* overflow-y: auto; */
+}
+
+/* Section for date dropdown menu */
+.dropdown-container {
+    padding-left: 29rem;
+    margin-top: -2rem;
+    text-align: left;
+    position: relative; /* Used for positioning the dropdown */
+}
+
+/* Design of dropdown menu */
+.dropbtn {
+    background-color: #FFFFFF;
+    border: 0.3rem solid #202B3B;
+    border-radius: 1rem;
+    width: 10rem;
+    cursor: pointer;
+}
+
+.dropbtn:hover {
+    background-color: #f0f0f0;
+}
+
+#dateDropdownMenu {
+    margin-left: 14.3rem;
+    text-align: center;
+    width: 10rem;
+}
+
+/* Adjusting space between Visit Summary and dog's info */
+#dogSummary{
+    margin-top: -1rem;
 }
   
 /* Each section */
-.open-text {
-    border-top: 1px solid #ddd;
-}
-  
+
 /* Title bar that you click */
 .open-text-title {
     display: flex;
@@ -274,10 +306,11 @@ main.main-grid {
     align-items: center;
     padding: .75rem;
     cursor: pointer;
-    background: #fff;
+    background: #FFFFFF;
     font-weight: 600;
     font-size: 1rem;
     transition: background 0.3s ease;
+    border-top: 0.5vh solid #262524;
 }
 
 .line-Separator{
@@ -300,11 +333,9 @@ main.main-grid {
     max-height: 0;
     overflow: hidden;
     padding: 0 1rem;
-    background-color: #f5f5f5;
+    background-color: #FFFFFF;
     transition: max-height 0.4s ease, padding 0.3s ease;
     font-size: 0.95rem;
-    border-bottom: 1px solid black;
-    border-radius: 0 0 10px 10px;
 }
   
 /* When open */
@@ -317,6 +348,23 @@ main.main-grid {
 .open-text.open .arrow {
     transform: rotate(90deg);
 }
+
+/* Adds bottom borders when opening tabs */
+/* Avoids borders stacking on each other */
+.open-text.open #medTab, .open-text.open #evalTab {
+    border-bottom: 0.5vh solid #262524;
+}
+
+/* Treatement tab needs bottom border since no neighbor next to it*/
+#treatTab {
+    border-bottom: 0.5vh solid #262524;
+}
+
+/* Keywords found in text */
+dfn{
+    color: #262524;
+    background-color: #fdff32;
+}
   
 /***** END Main Left Box styling *****/
 
@@ -327,8 +375,8 @@ main.main-grid {
     top: 100%;
     left: 0;
     padding: 6px 10px;
-    background: #333;
-    color: #fff;
+    background: #FFFFFF;
+    color: #FFFFFF;
     font-size: 0.6rem;
     border-radius: 6px;
     white-space: nowrap;
@@ -360,6 +408,11 @@ main.main-grid {
     padding: 2px 4px;
 }
 
+/* Adjusts color of prev/next month buttons */
+.fc .fc-button-primary {
+    background-color: #202B3B;
+    background-image: none;
+}
 /***** END Calendar styling *****/
 
 /***** START ListView styling *****/
@@ -380,7 +433,7 @@ main.main-grid {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: lightskyblue;
+    background-color: #F0EADA;
 }
   
   

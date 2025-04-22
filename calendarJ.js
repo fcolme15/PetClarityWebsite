@@ -14,6 +14,7 @@ function initIconDropdowns() {
       function toggleDropdown() {
         //Close any other open dropdowns first
         closeAllDropdownsExcept(dropdown);
+        
   
         //Toggle this dropdown
         dropdown.style.display = dropdown.style.display === 'block' ? 'none' : 'block';
