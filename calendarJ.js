@@ -62,6 +62,7 @@ function initInteractiveCalendar(containerId, eventsData = []) {
       height: 'auto',
       contentHeight: 'auto',
       events: eventsData,
+      eventColor: '#E83A0E',
       eventDidMount: function(info) {
         const icon = info.event.extendedProps.icon;
   

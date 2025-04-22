@@ -10,6 +10,7 @@ body {
     height: 100vh;
     display: flex;
     flex-direction: column;
+    background-color: #F0EADA;
 }
 
 p{
@@ -19,7 +20,7 @@ p{
 /***** START Header styling *****/
 .header {
     padding: 0 20px;  /* Add outer padding to keep items from touching the sides */ 
-    background-color: #FFFFFF;  
+    background-color: #F0EADA;  
 }
 
 /* Styling of title */
@@ -54,7 +55,7 @@ p{
     content: '\00a7'; font-size:30px; line-height:40px; color:#E83A0E;
     font-weight:400; z-index: 5;
     display:block;
-    background-color: #FFFFFF;  
+    background-color: #F0EADA;  
 }
   
 nav {
@@ -175,6 +176,7 @@ nav div {
     margin: 0 auto;  /* Centers the container */
     position: relative;  /* Make sure it's properly positioned */
     padding-top: 10rem;
+    background-color: #F0EADA;
 }
 
 #calendarContainer {
@@ -184,13 +186,13 @@ nav div {
 
 /* Override default event title text color */
 .fc-event-title, .fc-event, .fc-event-time {
-    color: #262524;  /* Color of event titles */
+    color: #FFFFFF;  /* Color of event titles */
     font-size: 1.25rem;
 }
 
 /* Handles events found in calendar */
 .event-type-deadline {
-    background-color: #FFFFFF;
+    background-color: #F0EADA;
 }
 
 /***** END Calendar styling *****/
