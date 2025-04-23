@@ -53,6 +53,7 @@ const region = COMETCHAT_CONSTANTS.REGION;  // Replace with your CometChat Regio
 const authKey = COMETCHAT_CONSTANTS.AUTH_KEY;  // Replace with your CometChat Auth Key
 
 let currentChatUID = null;
+let loggedInUserUID = null;
 
 //Initialize CometChat
 function initializeCometChat() {
@@ -69,17 +70,20 @@ function loginUser(uid) {
     return CometChat.login(uid, authKey);
 }
 
-//Setup CometChat
+//Setup CometChat OG
+
 function setupCometChat(uid) {
     initializeCometChat()
         .then(() => loginUser(uid))
         .then(user => {
             console.log("User logged in:", user);
+            loggedInUserUID = user.uid;
             addMessageListener("chat_listener");
-            listUsers();  // Fetch list of users
+            listUsers();
         })
         .catch(console.error);
 }
+
 
 //List users
 function listUsers() {
@@ -116,15 +120,27 @@ function fetchMessages(receiverID, receiverType) {
     });
 }
 
-//Display message in chat window
-function displayMessage(message) {
+// Display message in chat window
+function displayMessage(message, isUserMessage = false) {
     const chatWindow = document.getElementById("chatWindow");
     const messageDiv = document.createElement("div");
-    messageDiv.innerText = `${message.sender.name}: ${message.text}`;
+
+    const fromUser = isUserMessage || (message.metadata && message.metadata.sender === "me");
+
+    const messageClass = fromUser ? 'sent' : 'received';
+
+    messageDiv.classList.add('chat-message', messageClass);
+    messageDiv.innerText = message.text;
+
     chatWindow.appendChild(messageDiv);
+    chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
+
+
+
 //Send a message
+
 function sendUserMessage() {
     const text = document.getElementById("messageInput").value;
     if (!currentChatUID || !text) return;
@@ -135,11 +151,14 @@ function sendUserMessage() {
         CometChat.RECEIVER_TYPE.USER
     );
 
+    msg.setMetadata({ sender: "me" });
+
     CometChat.sendMessage(msg).then(message => {
-        displayMessage(message);
+        displayMessage(message, true);
         document.getElementById("messageInput").value = "";
     });
 }
+
 
 //Add message listener for real-time updates
 function addMessageListener(listenerID) {

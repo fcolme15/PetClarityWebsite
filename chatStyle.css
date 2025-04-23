@@ -154,30 +154,163 @@ nav div {
 
 /***** START Chat styling *****/
         
-#usersList { 
-    margin: 10px; 
-}
-        
-#usersList, button { 
-    padding: 10px; 
-    margin: 5px; 
-}
+.chat-container {
+    display: flex;
+    height: 100%;
+  }
+  
+  .chat-sidebar {
+    width: 25%;
+    background-color: #f7f7f7;
+    padding: 20px;
+    border-right: 1px solid #ddd;
+    overflow-y: auto;
+  }
+  
+  .chat-window {
+    width: 75%;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: #f1f1f1;
+  }
+  
+  #chatWindow {
+    flex-grow: 1;
+    overflow-y: auto;
+    background-color: #fff;
+    padding: 10px;
+    border-radius: 10px;
+    max-height: 500px;
+  }
+  
+  .message-input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  #messageInput {
+    width: 85%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  button {
+    width: 10%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+/***** Chat Message Bubbles Styling *****/
 
-#chatWindow {
-    margin: 20px; 
-    padding: 10px; 
-    background: #f1f1f1; 
-    min-height: 300px; 
-}
-
-#messageInput { 
-    width: 80%; 
-    padding: 10px; 
-    margin-top: 10px; 
-}
-        
-button { 
-    padding: 10px; 
-}
+.chat-message {
+    padding: 10px 15px;
+    margin: 5px 10px;
+    border-radius: 15px;
+    max-width: 70%;
+    word-wrap: break-word;
+    font-size: 14px;
+  }
+  
+  /* Messages sent by the logged-in user */
+  .chat-message.sent {
+    background-color: #007bff;
+    color: white;
+    align-self: flex-end;
+    margin-left: auto;
+    text-align: right;
+  }
+  
+  /* Messages received from the other user */
+  .chat-message.received {
+    background-color: #f1f0f0;
+    color: black;
+    align-self: flex-start;
+    margin-right: auto;
+    text-align: left;
+  }
+  
+  /* Ensure the chat window supports flex display */
+  #chatWindow {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  
+  /* The input area for new messages */
+  .message-input-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  #messageInput {
+    width: 85%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+  }
+  
+  button {
+    width: 10%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  
+  
+  /* Sidebar Styling */
+  #usersList button {
+    display: block;
+    padding: 12px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+    width: 100%;
+    text-align: left;
+    border-radius: 5px;
+    cursor: pointer;
+    color: #333; 
+    font-size: 1.2rem; 
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  #usersList button:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  #usersList button:focus {
+    outline: none;
+    background-color: #0056b3;
+    color: white;
+  }
+  
+  /* Additional styling for the sidebar */
+  .chat-sidebar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    color: #444;
+    font-weight: bold;
+  }
 
 /***** END Chat styling *****/

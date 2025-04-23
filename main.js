@@ -249,6 +249,7 @@ function listUsers() {
       users.forEach(user => {
           const userBtn = document.createElement("button");
           userBtn.innerText = user.name;
+          userBtn.classList.add("user");
           userBtn.onclick = () => {
               currentChatUID = user.uid;
               document.getElementById("chatWindow").innerHTML = "";
@@ -258,6 +259,7 @@ function listUsers() {
       });
   });
 }
+
 
 //Fetch previous messages
 function fetchMessages(receiverID, receiverType) {
@@ -272,14 +274,25 @@ function fetchMessages(receiverID, receiverType) {
 }
 
 //Display message in chat window
-function displayMessage(message) {
+
+function displayMessage(message, isUserMessage = false) {
   const chatWindow = document.getElementById("chatWindow");
   const messageDiv = document.createElement("div");
-  messageDiv.innerText = `${message.sender.name}: ${message.text}`;
+
+  const fromUser = isUserMessage || (message.metadata && message.metadata.sender === "me");
+
+  const messageClass = fromUser ? 'sent' : 'received';
+
+  messageDiv.classList.add('chat-message', messageClass);
+  messageDiv.innerText = message.text;
+
   chatWindow.appendChild(messageDiv);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
 }
 
+
 //Send a message
+
 function sendUserMessage() {
   const text = document.getElementById("messageInput").value;
   if (!currentChatUID || !text) return;
@@ -290,8 +303,10 @@ function sendUserMessage() {
       CometChat.RECEIVER_TYPE.USER
   );
 
+  msg.setMetadata({ sender: "me" });
+
   CometChat.sendMessage(msg).then(message => {
-      displayMessage(message);
+      displayMessage(message, true);
       document.getElementById("messageInput").value = "";
   });
 }
@@ -337,3 +352,5 @@ document.addEventListener('DOMContentLoaded', () => {
     
 });
   
+
+
