@@ -53,6 +53,11 @@ function closeAllDropdownsExcept(exception = null) {
         dropdown.style.display = 'none';
       }
     });
+    document.querySelectorAll('.dropdownMenu').forEach(dropdown => {
+      if (dropdown !== exception) {
+        dropdown.style.display = 'none';
+      }
+    });
   }
   
 //Close all dropdowns if the user clicks outside dropdowns (.icon-container)
@@ -174,14 +179,14 @@ function initInteractiveCalendar(containerId, eventsData = []) {
 const sampleCalendarEvents = [
     {
       title: 'Checkup',
-      start: '2025-04-22',
+      start: '2025-04-15',
       description: 'Annual physical with Dr. Smith',
       icon: '🏥'
     },
     {
       title: 'Take meds',
-      start: '2025-04-24',
-      description: 'Morning meds: Ibuprofen',
+      start: '2025-04-18',
+      description: 'Morning meds: Carprofen',
       icon: '💊'
     }
 ];

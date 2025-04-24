@@ -24,16 +24,19 @@ p{
 
 /* Styling of title */
 .middle-item h1 {
-    font-size:2rem;
-    text-align:center; 
-    line-height:1.5em; 
-    padding-bottom:1.2rem; 
-    font-family:"Playfair Display", serif; 
-    font-weight:bolder;
-    text-transform:uppercase;
+    font-size: 2rem;
+    text-align: center; 
+    line-height: 1.5em; 
+    padding-bottom: 1.2rem; 
+    font-family: "Playfair Display", serif; 
+    font-weight: bolder;
+    text-transform: uppercase;
     letter-spacing: .15rem; 
-    color:#262524;
-    padding-left: 25rem;
+    color: #262524;
+    padding-left: 0;  /* Removed fixed padding */
+    padding-right: 0; /* Removed fixed padding */
+    margin: 0 auto; /* Centering the title */
+    width: 100%; /* Allow the width to be flexible */
 }
   
 /* Lines under pet clarity */    
@@ -41,8 +44,9 @@ p{
     position: absolute;
     left: 0;
     bottom: 20px;
-    width: 60%;
-    left:50%; margin-left:-30%;
+    width: 100%;
+    left:50%; 
+    margin-left: -50%;
     height: 1px;
     content: "";
     background-color: #777; z-index: 4;
@@ -51,9 +55,17 @@ p{
 /* Blue icon under pet clarity */  
 .middle-item h1:after {
     position:absolute;
-    width:40px; height:40px; left:50%; margin-left:-20px; bottom:0px;
-    content: '\00a7'; font-size:30px; line-height:40px; color:#E83A0E;
-    font-weight:400; z-index: 5;
+    width:40px; 
+    height:40px; 
+    left:50%; 
+    margin-left:-20px; 
+    bottom:0px;
+    content: '\00a7'; 
+    font-size:30px; 
+    line-height:40px; 
+    color:#E83A0E;
+    font-weight:400; 
+    z-index: 5;
     display:block;
     background-color: #FFFFFF;  
 }
@@ -81,8 +93,9 @@ nav div {
 /* Styling for the tabs container */
 .tabs {
     display: flex;  /* Display tabs in a row */
-    gap: .5rem;  /* Space between tabs */
-    padding: 0rem 0rem 1rem 0rem;
+    gap: .25rem;  /* Space between tabs */
+    padding: 0rem 0rem .5rem 0rem;
+    
 }
 
 /* Styling for individual tabs */
@@ -95,6 +108,7 @@ nav div {
     transition: background-color 0.4s ease;  /* Smooth background color change */
     font-family:"Playfair Display", serif; 
     font-weight: bold;
+    z-index: 6;
 }
 
 .tab:hover {
@@ -265,16 +279,27 @@ main.main-grid {
 .summary {
     padding: 1rem;
     background-color: #FFFFFF;
-    height: 15vh;
-    /* overflow-y: auto; */
+    min-height: 18vh;
+    max-height: 18vh;
+    overflow: auto;
 }
 
 /* Section for date dropdown menu */
 .dropdown-container {
-    padding-left: 27rem;
-    margin-top: -2rem;
-    text-align: left;
-    position: relative; /* Used for positioning the dropdown */
+    display: flex;
+    gap: 1rem;
+    justify-content: flex-end;  
+    align-items: center;  /* Vertically center the content */
+    width: 100%;  /* Ensure it spans the full width */
+    position: relative;  /* Make this container the reference point for positioning */
+
+}
+
+.summary_header{
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 1rem;
+    white-space: nowrap;
 }
 
 /* Design of dropdown menu */
@@ -290,10 +315,44 @@ main.main-grid {
     background-color: #f0f0f0;
 }
 
+.dropdown-wrapper {
+    position: relative; /* makes sure dropdown is anchored to this wrapper */
+    display: inline-block;
+}
+
+.dropdownMenu {
+    display: none;  /* Hidden by default */
+    position: absolute;
+    top: 120%;  /* Positions the dropdown below the icon */
+    left: 50%;
+    transform: translateX(-50%);  /* Centers the dropdown horizontally */
+    background-color: #FFFFFF;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    width: 6rem;
+    padding: 10px;
+    z-index: 15;
+}
+
+/* Styling for the dropdown menu text */
+.dropdownMenu p {
+    margin: 0;
+    padding: 8px;
+    cursor: pointer;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Add hover effect to items */
+.dropdownMenu p:hover {
+    background-color: #FFFFFF;  /* Add hover effect for dropdown items */
+}
+
 #dateDropdownMenu {
-    margin-left: 14.3rem;
+    margin-left: 32%;
     text-align: center;
     width: 10rem;
+    padding-left: -80%;
 }
 
 /* Adjusting space between Visit Summary and dog's info */
@@ -493,6 +552,7 @@ dfn{
     /* More spacious layouts, increased max-widths, larger font */
 }
 
+/***** START Chat Styling *****/
 
 /* Chat Container */
 .chat-container {
@@ -561,15 +621,15 @@ dfn{
     text-align: center;
     font-size: 0.8rem; 
     margin-bottom: 0.5rem;  
-  }
+}
   
-  .user:hover {
+.user:hover {
     background-color: #0d54b7;
-  }
+}
   
   
   /* Expand Toggle Button */
-  #toggleBtn {
+#toggleBtn {
     padding: 0.5rem 1rem;
     border-radius: 20px;
     border: none;
@@ -578,29 +638,29 @@ dfn{
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
+}
   
-  #toggleBtn:hover {
+#toggleBtn:hover {
     background-color: #cc300c;
-  }
+}
   
   /* Chat Panel */
-  .chat-panel {
+.chat-panel {
     flex: 1;
     background-color: #354254;
     border-radius: 15px;
     display: flex;
     flex-direction: column;
     padding: 1rem;
-  }
+}
   
-  .chat-header h3 {
+.chat-header h3 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
-  }
+}
   
   /* Chat Window */
-  #chatWindow {
+#chatWindow {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -608,49 +668,48 @@ dfn{
     overflow-y: auto;
     padding-right: 0.5rem;
     margin-bottom: 1rem;
-  }
+}
   
   /* Message Bubbles */
-  .chat-message {
+.chat-message {
     padding: 0.75rem 1rem;
     border-radius: 20px;
     font-size: 0.95rem;
     max-width: 70%;
     word-wrap: break-word;
     line-height: 1.4;
-  }
+}
   
-  .chat-message.sent {
+.chat-message.sent {
     background-color: #007bff;
     color: white;
     align-self: flex-end;
     text-align: right;
-  }
+}
   
-  .chat-message.received {
+.chat-message.received {
     background-color: #f1f0f0;
     color: black;
     align-self: flex-start;
     text-align: left;
-  }
+}
   
-  /* Input Area */
-  .chat-input-area {
+.chat-input-area {
     display: flex;
     gap: 0.75rem;
     align-items: center;
-  }
+}
   
-  .chat-input-area input {
+.chat-input-area input {
     flex: 1;
     padding: 0.6rem 1rem;
     border-radius: 20px;
     border: none;
     outline: none;
     font-size: 1rem;
-  }
+}
   
-  .chat-input-area button {
+.chat-input-area button {
     padding: 0.6rem 1rem;
     border-radius: 20px;
     border: none;
@@ -659,13 +718,14 @@ dfn{
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
+}
   
-  .chat-input-area button:hover {
+.chat-input-area button:hover {
     background-color: #174f9c;
-  }
+}
   
-  .active{
+.active{
     background-color: #174f9c;
-  }
+}
   
+  /***** END Chat Styling *****/

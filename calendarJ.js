@@ -95,13 +95,13 @@ const sampleCalendarEvents = [
     {
       title: 'Checkup',
       start: '2025-04-22',
-      description: 'Annual physical with Dr. Smith',
+      description: 'Annual physical with Vet',
       icon: '🏥'
     },
     {
       title: 'Take meds',
       start: '2025-04-24',
-      description: 'Morning meds: Ibuprofen',
+      description: 'Morning meds: Carprofen',
       icon: '💊'
     }
 ];
