@@ -463,6 +463,15 @@ dfn{
     justify-content: space-between;
 }
 
+.priority-badge {
+    background-color: red;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    margin-right: 8px;
+}
+
 /***** END ListView styling *****/
 
   /* Mobile */
