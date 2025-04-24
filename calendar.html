@@ -53,6 +53,15 @@
     <div id='calendarContainer'></div>
   </div>
 
+  <script>
+    document.addEventListener("keydown", function(event) {
+      if ((event.ctrlKey || event.metaKey) && event.key === "z") {
+        event.preventDefault(); //blocks default undo
+        window.history.back(); //Previous page
+      }
+    });
+  </script>
+
   <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
 

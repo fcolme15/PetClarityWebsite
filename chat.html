@@ -64,6 +64,14 @@
     </div>
     
 
+    <script>
+      document.addEventListener("keydown", function(event) {
+        if ((event.ctrlKey || event.metaKey) && event.key === "z") {
+          event.preventDefault(); //blocks default undo
+          window.history.back(); //Previous page
+        }
+      });
+    </script>
     
 
     <script type="module" src="chatJ.js"></script>
