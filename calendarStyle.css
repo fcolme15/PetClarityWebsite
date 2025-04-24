@@ -175,8 +175,9 @@ nav div {
     height: 83vh;  /* Set the desired height, adjust as needed */
     margin: 0 auto;  /* Centers the container */
     position: relative;  /* Make sure it's properly positioned */
-    padding-top: 10rem;
+    padding-top: 2rem;
     background-color: #F0EADA;
+    transition: width 0.5s ease, height 0.5s ease;
 }
 
 #calendarContainer {
@@ -207,6 +208,11 @@ nav div {
 
   /* Laptops / Small Desktops */
   @media (min-width: 768px) and (max-width: 1279px) {
+    #calendarView {
+        width: 125vh;  /* Set the desired width, adjust as needed */
+        height: 60vh;  /* Set the desired height, adjust as needed */
+        /* background-color: #262524; */
+    }
     /* Moderate padding, 2-column layouts, readable font sizes */
   }
   
