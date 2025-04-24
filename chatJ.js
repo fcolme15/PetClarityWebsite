@@ -47,120 +47,131 @@ function handleOutsideClick(event) {
 
 //START CometChat
 
-
-const appID = COMETCHAT_CONSTANTS.APP_ID;  // Replace with your CometChat App ID
-const region = COMETCHAT_CONSTANTS.REGION;  // Replace with your CometChat Region
-const authKey = COMETCHAT_CONSTANTS.AUTH_KEY;  // Replace with your CometChat Auth Key
+const appID = COMETCHAT_CONSTANTS.APP_ID;  
+const region = COMETCHAT_CONSTANTS.REGION; 
+const authKey = COMETCHAT_CONSTANTS.AUTH_KEY; 
 
 let currentChatUID = null;
 let loggedInUserUID = null;
 
-//Initialize CometChat
+
 function initializeCometChat() {
-    const appSetting = new CometChat.AppSettingsBuilder()
-        .subscribePresenceForAllUsers()
-        .setRegion(region)
-        .build();
+  const appSetting = new CometChat.AppSettingsBuilder()
+    .subscribePresenceForAllUsers()
+    .setRegion(region)
+    .build();
 
-    return CometChat.init(appID, appSetting);
+  return CometChat.init(appID, appSetting);
 }
 
-//Login user
+
 function loginUser(uid) {
-    return CometChat.login(uid, authKey);
+  return CometChat.login(uid, authKey);
 }
 
-//Setup CometChat OG
-
+//Setup CometChat
 function setupCometChat(uid) {
-    initializeCometChat()
-        .then(() => loginUser(uid))
-        .then(user => {
-            console.log("User logged in:", user);
-            loggedInUserUID = user.uid;
-            addMessageListener("chat_listener");
-            listUsers();
-        })
-        .catch(console.error);
+  initializeCometChat()
+    .then(() => loginUser(uid))
+    .then(user => {
+        console.log("User logged in:", user);
+        loggedInUserUID = user.uid;
+        addMessageListener("chat_listener");
+        listUsers();  // Fetch list of users
+    })
+    .catch(console.error);
 }
-
 
 //List users
 function listUsers() {
-    const usersRequest = new CometChat.UsersRequestBuilder()
-        .setLimit(10)
-        .build();
+  const usersRequest = new CometChat.UsersRequestBuilder()
+      .setLimit(10)
+      .build();
 
-    usersRequest.fetchNext().then(users => {
-        const usersListDiv = document.getElementById("usersList");
-        usersListDiv.innerHTML = "";
+  const defaultUserName = "Today";
 
-        users.forEach(user => {
-            const userBtn = document.createElement("button");
-            userBtn.innerText = user.name;
-            userBtn.onclick = () => {
-                currentChatUID = user.uid;
-                document.getElementById("chatWindow").innerHTML = "";
-                fetchMessages(user.uid, CometChat.RECEIVER_TYPE.USER);
-            };
-            usersListDiv.appendChild(userBtn);
-        });
-    });
+  usersRequest.fetchNext().then(users => {
+      const usersListDiv = document.getElementById("usersList");
+      usersListDiv.innerHTML = "";
+
+      users.forEach(user => {
+          const userBtn = document.createElement("button");
+          userBtn.innerText = user.name;
+          userBtn.classList.add("user");
+          userBtn.onclick = () => {
+              currentChatUID = user.uid;
+              document.getElementById("chatWindow").innerHTML = "";
+              fetchMessages(user.uid, CometChat.RECEIVER_TYPE.USER);
+
+              // Highlight the selected user
+              document.querySelectorAll(".user").forEach(btn => btn.classList.remove("active"));
+              userBtn.classList.add("active");
+          };
+          usersListDiv.appendChild(userBtn);
+
+          //Preload the specific user
+          if (user.name === defaultUserName) {
+              currentChatUID = user.uid;
+              document.getElementById("chatWindow").innerHTML = "";
+              fetchMessages(user.uid, CometChat.RECEIVER_TYPE.USER);
+              userBtn.classList.add("active");
+          }
+      });
+  });
 }
+
+
+
 
 //Fetch previous messages
 function fetchMessages(receiverID, receiverType) {
-    const messagesRequest = new CometChat.MessagesRequestBuilder()
-        .setUID(receiverID)
-        .setLimit(30)
-        .build();
+  const messagesRequest = new CometChat.MessagesRequestBuilder()
+      .setUID(receiverID)
+      .setLimit(30)
+      .build();
 
-    messagesRequest.fetchPrevious().then(messages => {
-        messages.forEach(msg => displayMessage(msg));
-    });
+  messagesRequest.fetchPrevious().then(messages => {
+      messages.forEach(msg => displayMessage(msg));
+  });
 }
 
-// Display message in chat window
-function displayMessage(message, isUserMessage = false) {
-    const chatWindow = document.getElementById("chatWindow");
-    const messageDiv = document.createElement("div");
+//Display message in chat window
+function displayMessage(message) {
+  const chatWindow = document.getElementById("chatWindow");
+  const messageDiv = document.createElement("div");
 
-    const fromUser = isUserMessage || (message.metadata && message.metadata.sender === "me");
+  const fromUser = message.sender.uid === loggedInUserUID;
+  const messageClass = fromUser ? 'sent' : 'received';
 
-    const messageClass = fromUser ? 'sent' : 'received';
+  messageDiv.classList.add('chat-message', messageClass);
+  
+  if (!message.text || message.text === "undefined") return;
 
-    messageDiv.classList.add('chat-message', messageClass);
-    messageDiv.innerText = message.text;
-
-    chatWindow.appendChild(messageDiv);
-    chatWindow.scrollTop = chatWindow.scrollHeight;
+  messageDiv.innerText = message.text;
+  chatWindow.appendChild(messageDiv);
+  chatWindow.scrollTop = chatWindow.scrollHeight;
 }
-
-
 
 
 //Send a message
 
 function sendUserMessage() {
-    const text = document.getElementById("messageInput").value;
-    if (!currentChatUID || !text) return;
+  const text = document.getElementById("messageInput").value;
+  if (!currentChatUID || !text) return;
 
-    const msg = new CometChat.TextMessage(
-        currentChatUID,
-        text,
-        CometChat.RECEIVER_TYPE.USER
-    );
+  const msg = new CometChat.TextMessage(
+      currentChatUID,
+      text,
+      CometChat.RECEIVER_TYPE.USER
+  );
 
-    msg.setMetadata({ sender: "me" });
-
-    CometChat.sendMessage(msg).then(message => {
-        displayMessage(message, true);
-        document.getElementById("messageInput").value = "";
-    });
+  CometChat.sendMessage(msg).then(message => {
+      displayMessage(message, true);
+      document.getElementById("messageInput").value = "";
+  });
 }
 
-
-//Add message listener for real-time updates
+//Add message listener
 function addMessageListener(listenerID) {
     CometChat.addMessageListener(
         listenerID,
@@ -175,14 +186,13 @@ function addMessageListener(listenerID) {
 }
 
 function attachClickHandler(id, callback) {
-    const element = document.getElementById(id);
-    if (element) {
-      element.addEventListener('click', callback);
-    } else {
-      console.warn(`Element with ID "${id}" not found.`);
-    }
+  const element = document.getElementById(id);
+  if (element) {
+    element.addEventListener('click', callback);
+  } else {
+    console.warn(`Element with ID "${id}" not found.`);
+  }
 }
-
 
 //END CometChat
 

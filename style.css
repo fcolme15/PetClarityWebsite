@@ -512,10 +512,29 @@ dfn{
   display: flex;
   flex-direction: column;
   overflow-y: auto;
+  scrollbar-width: thin; /* For Firefox */
+  scrollbar-color: #888 transparent; /* For Firefox */
+}
+
+/* Adjust the scroll bar */
+/* Chrome, Edge, Safari */
+.chat-users::-webkit-scrollbar {
+    width: 6px; /* thinner bar */
+}
+
+.chat-users::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+
+.chat-users::-webkit-scrollbar-thumb {
+    background-color: #888;
+    border-radius: 10px;
+    border: 1px solid transparent; 
 }
 
 .chat-users h3 {
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-bottom: 0.75rem;
 }
 
@@ -533,19 +552,19 @@ dfn{
 
 /* User Button */
 .user {
-    padding: 0.5rem 0.75rem;  
+    padding: 0.4rem 0.65rem;  
     background-color: #3C4B61;
     border-radius: 15px; 
     cursor: pointer;
     transition: background-color 0.3s ease;
     font-weight: 500;
     text-align: center;
-    font-size: 0.9rem; 
+    font-size: 0.8rem; 
     margin-bottom: 0.5rem;  
   }
   
   .user:hover {
-    background-color: #475a75;
+    background-color: #0d54b7;
   }
   
   
@@ -643,7 +662,10 @@ dfn{
   }
   
   .chat-input-area button:hover {
-    background-color: #cc300c;
+    background-color: #174f9c;
   }
   
+  .active{
+    background-color: #174f9c;
+  }
   
