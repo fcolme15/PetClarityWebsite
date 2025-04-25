@@ -1,4 +1,27 @@
 import {COMETCHAT_CONSTANTS} from "./const.js"
+import {VISIT_SUMMARIES} from "./visitSummaries.js"
+
+const profiles = {
+  Luna: {
+    breed: "Boxer",
+    age: "2 Years",
+    weight: "61 Pounds",
+    birthday: "1/11/23"
+  },
+  Tank: {
+    breed: "Golden Retriever",
+    age: "3 Years",
+    weight: "78 Pounds",
+    birthday: "5/04/22"
+  },
+  Bean: {
+    breed: "French Bulldog",
+    age: "1 Year",
+    weight: "22 Pounds",
+    birthday: "8/12/23"
+  }
+};
+
 //START Icon Dropdowns
 
 //Initializes all icon dropdowns on the page
@@ -58,7 +81,7 @@ function closeAllDropdownsExcept(exception = null) {
         dropdown.style.display = 'none';
       }
     });
-  }
+}
   
 //Close all dropdowns if the user clicks outside dropdowns (.icon-container)
 function handleOutsideClick(event) {
@@ -357,6 +380,129 @@ function attachClickHandler(id, callback) {
 
 //END CometChat
 
+//START Pet Selected Using Cookies
+function getCookie(name) {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  return match ? match[2] : null;
+}
+
+function setCookie(name, value) {
+  document.cookie = `${name}=${value}; path=/`;
+}
+
+function updateDogSummary(profileName) {
+  const profile = profiles[profileName];
+  if (!profile) return; 
+
+  const dogSummary = document.getElementById("dogSummary");
+  const dogName = document.getElementById("petProfileName");
+  dogName.innerHTML = `${profileName}`
+  dogSummary.innerHTML = `
+    <span>Breed: ${profile.breed}</span>
+    <span style="margin-left: 5rem">Age: ${profile.age}</span><br>
+    <span>Weight: ${profile.weight}</span>
+    <span style="margin-left: 2.4rem">Birthday: ${profile.birthday}</span><br>
+  `;
+}
+
+function initProfileSelection() {
+  let profile = getCookie('selectedProfile');
+
+  // If no cookie exists, set a default profile (e.g., "guest")
+  if (!profile) {
+    profile = 'Luna'; //Default profile 
+    setCookie('selectedProfile', profile);
+  }
+
+  updateDogSummary(profile); // Only this is needed to update the visit summary content
+  
+}
+
+function setupDropdownProfileSwitch() {
+  document.querySelectorAll('#petDropdownMenu p').forEach(item => {
+    item.addEventListener('click', () => {
+      const selectedProfile = item.getAttribute('data-profile');
+      setCookie('selectedProfile', selectedProfile); // Save it
+      updateDogSummary(selectedProfile);             // Update content
+      closeAllDropdownsExcept();
+    });
+  });
+}
+
+//END Pet Selected Using Cookies
+
+//START Language change
+function initLanguageSelection() {
+  let profile = getCookie('selectedLang');
+
+  // If no cookie exists, set a default profile (e.g., "guest")
+  if (!profile) {
+    profile = 'English'; //Default profile 
+    setCookie('selectedLang', profile);
+  }
+
+  updateVisitSummary();             // Update content
+}
+
+function updateVisitSummary() {
+  const lang = getCookie('selectedLang') || 'English';
+  const visit = getCookie('selectedVisit') || 'SprainedAnkle';
+
+  const summaries = VISIT_SUMMARIES[lang][visit];
+  
+
+  if (summaries) {
+    const evaluationEl = document.getElementById('evaluationContent');
+    const medicationEl = document.getElementById('medicationContent');
+    const treatmentEl = document.getElementById('treatmentContent');
+    const langaugeSelected = document.getElementById('languageSelected');
+    const visitSelected = document.getElementById('visitSelected');
+
+    if (evaluationEl) evaluationEl.innerHTML = summaries.evaluation;
+    if (medicationEl) medicationEl.innerHTML = summaries.medication;
+    if (treatmentEl) treatmentEl.innerHTML = summaries.treatment;
+    if (langaugeSelected) langaugeSelected.innerHTML = lang;
+    if (visitSelected) visitSelected.innerHTML = visit;
+  }
+}
+
+
+function setupDropdownLanguageSwitch() {
+  document.querySelectorAll('#langDropdownMenu p').forEach(item => {
+    item.addEventListener('click', () => {
+      const selectedLang = item.getAttribute('data-lang');
+      setCookie('selectedLang', selectedLang); // Save it
+      updateVisitSummary();             // Update content
+      closeAllDropdownsExcept();
+    });
+  });
+}
+//END Language change
+
+//START Visit change
+function initVisitSelection() {
+  let profile = getCookie('selectedLang');
+
+  // If no cookie exists, set a default profile (e.g., "guest")
+  if (!profile) {
+    profile = 'SprainedAnkle'; //Default profile 
+    setCookie('selectedVisit', profile);
+  }
+  
+}
+
+function setupDropdownVisitwitch() {
+  document.querySelectorAll('#dateDropdownMenu p').forEach(item => {
+    item.addEventListener('click', () => {
+      const selectedVisit = item.getAttribute('data-visit');
+      setCookie('selectedVisit', selectedVisit); // Save it
+      updateVisitSummary();             // Update content
+      closeAllDropdownsExcept();
+    });
+  });
+}
+//END Language change
+
 
 
 // Initialize all listeners when the DOM is done loading
@@ -370,7 +516,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const uid = "cometchat-uid-1";  
     setupCometChat(uid);
     attachClickHandler('sendBtn', sendUserMessage);
-    
+    initProfileSelection();
+    setupDropdownProfileSwitch();
+    initVisitSelection();
+    initLanguageSelection();
+    setupDropdownLanguageSwitch();
+    setupDropdownVisitwitch();
 });
   
 

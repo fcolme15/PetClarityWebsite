@@ -8,45 +8,46 @@
     <link rel="stylesheet" href="chatStyle.css" />
 </head>
 <body>
-    <header class="header">
-      <nav>
-  
-        <div class="left-item">
-          <div class="icon-container">
-            <img src="./imgs/globeIcon.jpg" alt="icon" class="icon" />
-            <p class="icon-text">English</p>
-            <div class="dropdown" id="dropdownMenu">
-              <p>English</p>
-              <p>Spanish</p>
-              <p>French</p>
-            </div>
-          </div> 
+  <header class="header">
+    <nav>
+
+      <div class="left-item">
+        <div class="icon-container">
+          <img src="./imgs/globeIcon.jpg" alt="icon" class="icon" />
+          <p class="icon-text" id="languageSelected">English</p>
+          <div class="dropdown" id="langDropdownMenu">
+            <p data-lang="English">English</p>
+            <p data-lang="Spanish">Spanish</p>
+            <p data-lang="French">French</p>
+            <p data-lang="Portuguese">Portuguese</p>
+          </div>
+        </div> 
+      </div>
+
+      
+      <div class="middle-item">
+        <h1>PetClarity</h1>
+        <div class="tabs">
+          <a href="index.html" class="tab">Dashboard</a>
+          <a href="calendar.html" class="tab">Calendar</a>
+          <a href="chat.html" class="tab">Chat</a>
         </div>
-  
-        
-        <div class="middle-item">
-          <h1>PetClarity</h1>
-          <div class="tabs">
-            <a href="indexEng.html" class="tab">Dashboard</a>
-            <a href="calendar.html" class="tab">Calendar</a>
-            <a href="chat.html" class="tab">Chat</a>
+      </div>
+
+      <div class="right-item">
+        <div class="icon-container">
+          <img src="./imgs/dogIcon.png" alt="icon" class="icon" />
+          <p class="icon-text" id="petProfileName">Luna</p>
+          <div class="dropdown" id="petDropdownMenu">
+            <p data-profile="Luna">Luna</p>
+            <p data-profile="Tank">Tank</p>
+            <p data-profile="Bean">Bean</p>
           </div>
         </div>
-  
-        <div class="right-item">
-          <div class="icon-container">
-            <img src="./imgs/dogIcon.png" alt="icon" class="icon" />
-            <p class="icon-text">Luna</p>
-            <div class="dropdown" id="dropdownMenu">
-              <p>Luna</p>
-              <p>Tank</p>
-              <p>Bean</p>
-            </div>
-          </div>
-        </div>
-  
-      </nav>
-    </header>
+      </div>
+
+    </nav>
+  </header>
 
       <div class="chat-container">
         <!-- Sidebar -->

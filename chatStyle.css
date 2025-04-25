@@ -19,134 +19,158 @@ p{
 
 /***** START Header styling *****/
 .header {
-    padding: 0 20px;  /* Add outer padding to keep items from touching the sides */ 
-    background-color: #FFFFFF;  
+  padding: 0 20px;  /* Add outer padding to keep items from touching the sides */ 
+  background-color: #FFFFFF;  
 }
 
 /* Styling of title */
 .middle-item h1 {
-    font-size:2rem;
-    text-align:center; 
-    line-height:1.5em; 
-    padding-bottom:1.2rem; 
-    font-family:"Playfair Display", serif; 
-    text-transform:uppercase;
-    letter-spacing: .15rem; 
-    color:#262524;
-    padding-left: 25rem;
+  font-size: 2rem;
+  text-align: center; 
+  line-height: 1.5em; 
+  padding-bottom: 1.2rem; 
+  font-family: "Playfair Display", serif; 
+  font-weight: bolder;
+  text-transform: uppercase;
+  letter-spacing: .15rem; 
+  color: #262524;
+  padding-left: 0;  /* Removed fixed padding */
+  padding-right: 0; /* Removed fixed padding */
+  margin: 0 auto; /* Centering the title */
+  width: 100%; /* Allow the width to be flexible */
 }
-  
+
 /* Lines under pet clarity */    
 .middle-item h1:before {
-    position: absolute;
-    left: 0;
-    bottom: 20px;
-    width: 60%;
-    left:50%; margin-left:-30%;
-    height: 1px;
-    content: "";
-    background-color: #777; z-index: 4;
-  }
+  position: absolute;
+  left: 0;
+  bottom: 20px;
+  width: 100%;
+  left:50%; 
+  margin-left: -50%;
+  height: 1px;
+  content: "";
+  background-color: #777; z-index: 4;
+}
 
 /* Blue icon under pet clarity */  
 .middle-item h1:after {
-    position:absolute;
-    width:40px; height:40px; left:50%; margin-left:-20px; bottom:0px;
-    content: '\00a7'; font-size:30px; line-height:40px; color:#E83A0E;
-    font-weight:400; z-index: 5;
-    display:block;
-    background-color: #FFFFFF;  
+  position:absolute;
+  width:40px; 
+  height:40px; 
+  left:50%; 
+  margin-left:-20px; 
+  bottom:0px;
+  content: '\00a7'; 
+  font-size:30px; 
+  line-height:40px; 
+  color:#E83A0E;
+  font-weight:400; 
+  z-index: 5;
+  display:block;
+  background-color: #FFFFFF;  
 }
-  
+
 nav {
-    display: flex;
-    justify-content: space-between;  /* Push items to the far left and right */
-    align-items: center;  /* Vertically center items */
-    width: 100%;  /* Make sure it takes up the full width */
+  display: flex;
+  justify-content: space-between;  /* Push items to the far left and right */
+  align-items: center;  /* Vertically center items */
+  width: 100%;  /* Make sure it takes up the full width */
 }
-  
+
 nav div {
-    /* Styling for items in nav */
-    padding: 10px;
+  /* Styling for items in nav */
+  padding: 10px;
 }
-  
+
 .middle-item {
-    display: flex;  /* Use flexbox to arrange items side by side */
-    justify-content: center;  /* Keep content centered */
-    align-items: center;  /* Vertically center the content */
-    gap: .5rem;  /* Space between the title and tabs */
-    position: relative;  /* To allow proper positioning of items */
+  display: flex;  /* Use flexbox to arrange items side by side */
+  justify-content: center;  /* Keep content centered */
+  align-items: center;  /* Vertically center the content */
+  gap: .5rem;  /* Space between the title and tabs */
+  position: relative;  /* To allow proper positioning of items */
 }
 
 /* Styling for the tabs container */
 .tabs {
-    display: flex;  /* Display tabs in a row */
-    gap: .5rem;  /* Space between tabs */
+  display: flex;  /* Display tabs in a row */
+  gap: .25rem;  /* Space between tabs */
+  padding: 0rem 0rem .5rem 0rem;
+  
 }
 
 /* Styling for individual tabs */
 .tab {
-    text-decoration: none;  /* Remove underline */
-    color: #262524;  /* Tab text color */
-    font-size: 1.5rem;  /* Slightly smaller than the title */
-    padding: 0.5rem 1rem;  /* Padding to make tabs look like buttons */
-    border-radius: 5px;  /* Rounded corners */
-    transition: background-color 0.4s ease;  /* Smooth background color change */
-    font-family:"Playfair Display", serif; 
-    font-weight: bold;
+  text-decoration: none;  /* Remove underline */
+  color: #262524;  /* Tab text color */
+  font-size: 1.5rem;  /* Slightly smaller than the title */
+  padding: 0.5rem 1rem;  /* Padding to make tabs look like buttons */
+  border-radius: 5px;  /* Rounded corners */
+  transition: background-color 0.4s ease;  /* Smooth background color change */
+  font-family:"Playfair Display", serif; 
+  font-weight: bold;
+  z-index: 6;
 }
 
 .tab:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
-  
+
 /* Styling for the container */
 .icon-container {
-    text-align: center;
-    position: relative; /* Used for positioning the dropdown */
+  text-align: center;
+  position: relative; /* Used for positioning the dropdown */
+  min-width: 5rem;
+  max-width: 5rem;
 }
-  
+
 /* Circular image styling */
 .icon {
-    width: 3em;
-    height: 3rem;
-    border-radius: 50%;  /* Make the image circular */
-    object-fit: cover;
-    cursor: pointer;  /* Show pointer when hovering over the image */
+  width: 3em;
+  height: 3rem;
+  border-radius: 50%;  /* Make the image circular */
+  object-fit: cover;
+  cursor: pointer;  /* Show pointer when hovering over the image */
 }
-  
+
 /* Text below the image */
 .icon-text {
-    margin-top: 10px;
-    cursor: pointer;  /* Show pointer when hovering over the text */
+  margin-top: 10px;
+  cursor: pointer;  /* Show pointer when hovering over the text */
 }
-  
+
 /* Styling for the dropdown menu */
 .dropdown {
-    display: none;  /* Hidden by default */
-    position: absolute;
-    top: 120%;  /* Positions the dropdown below the icon */
-    left: 50%;
-    transform: translateX(-50%);  /* Centers the dropdown horizontally */
-    background-color: #FFFFFF;
-    border: 1px solid #ddd;
-    border-radius: 5px;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    width: 6rem;
-    padding: 10px;
-    z-index: 15;
+  display: none;  /* Hidden by default */
+  position: absolute;
+  top: 120%;  /* Positions the dropdown below the icon */
+  left: 50%;
+  transform: translateX(-50%);  /* Centers the dropdown horizontally */
+  background-color: #FFFFFF;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  width: 6rem;
+  padding: 10px;
+  z-index: 15;
 }
-  
+
 /* Styling for the dropdown menu text */
 .dropdown p {
-    margin: 0;
-    padding: 8px;
-    cursor: pointer;
+  margin: 0;
+  padding: 8px;
+  cursor: pointer;
+  border-bottom: 1px solid #ddd;
 }
 
 /* Add hover effect to items */
 .dropdown p:hover {
-    background-color: #FFFFFF;  /* Add hover effect for dropdown items */
+  background-color: #FFFFFF;  /* Add hover effect for dropdown items */
+}
+
+#langDropdownMenu{
+  width:fit-content;
+  position: absolute;
 }
 
 /***** END Header styling *****/

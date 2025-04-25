@@ -20,20 +20,24 @@ p{
 /***** START Header styling *****/
 .header {
     padding: 0 20px;  /* Add outer padding to keep items from touching the sides */ 
-    background-color: #F0EADA;  
+    background-color: #FFFFFF;  
 }
 
 /* Styling of title */
 .middle-item h1 {
-    font-size:2rem;
-    text-align:center; 
-    line-height:1.5em; 
-    padding-bottom:1.2rem; 
-    font-family:"Playfair Display", serif; 
-    text-transform:uppercase;
+    font-size: 2rem;
+    text-align: center; 
+    line-height: 1.5em; 
+    padding-bottom: 1.2rem; 
+    font-family: "Playfair Display", serif; 
+    font-weight: bolder;
+    text-transform: uppercase;
     letter-spacing: .15rem; 
-    color:#262524;
-    padding-left: 25rem;
+    color: #262524;
+    padding-left: 0;  /* Removed fixed padding */
+    padding-right: 0; /* Removed fixed padding */
+    margin: 0 auto; /* Centering the title */
+    width: 100%; /* Allow the width to be flexible */
 }
   
 /* Lines under pet clarity */    
@@ -41,21 +45,30 @@ p{
     position: absolute;
     left: 0;
     bottom: 20px;
-    width: 60%;
-    left:50%; margin-left:-30%;
+    width: 100%;
+    left:50%; 
+    margin-left: -50%;
     height: 1px;
     content: "";
-    background-color: #262524; z-index: 4;
+    background-color: #777; z-index: 4;
   }
 
 /* Blue icon under pet clarity */  
 .middle-item h1:after {
     position:absolute;
-    width:40px; height:40px; left:50%; margin-left:-20px; bottom:0px;
-    content: '\00a7'; font-size:30px; line-height:40px; color:#E83A0E;
-    font-weight:400; z-index: 5;
+    width:40px; 
+    height:40px; 
+    left:50%; 
+    margin-left:-20px; 
+    bottom:0px;
+    content: '\00a7'; 
+    font-size:30px; 
+    line-height:40px; 
+    color:#E83A0E;
+    font-weight:400; 
+    z-index: 5;
     display:block;
-    background-color: #F0EADA;  
+    background-color: #FFFFFF;  
 }
   
 nav {
@@ -81,7 +94,9 @@ nav div {
 /* Styling for the tabs container */
 .tabs {
     display: flex;  /* Display tabs in a row */
-    gap: .5rem;  /* Space between tabs */
+    gap: .25rem;  /* Space between tabs */
+    padding: 0rem 0rem .5rem 0rem;
+    
 }
 
 /* Styling for individual tabs */
@@ -94,6 +109,7 @@ nav div {
     transition: background-color 0.4s ease;  /* Smooth background color change */
     font-family:"Playfair Display", serif; 
     font-weight: bold;
+    z-index: 6;
 }
 
 .tab:hover {
@@ -104,6 +120,8 @@ nav div {
 .icon-container {
     text-align: center;
     position: relative; /* Used for positioning the dropdown */
+    min-width: 5rem;
+    max-width: 5rem;
 }
   
 /* Circular image styling */
@@ -142,11 +160,17 @@ nav div {
     margin: 0;
     padding: 8px;
     cursor: pointer;
+    border-bottom: 1px solid #ddd;
 }
 
 /* Add hover effect to items */
 .dropdown p:hover {
     background-color: #FFFFFF;  /* Add hover effect for dropdown items */
+}
+
+#langDropdownMenu{
+    width:fit-content;
+    position: absolute;
 }
 
 /***** END Header styling *****/

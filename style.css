@@ -119,6 +119,8 @@ nav div {
 .icon-container {
     text-align: center;
     position: relative; /* Used for positioning the dropdown */
+    min-width: 5rem;
+    max-width: 5rem;
 }
   
 /* Circular image styling */
@@ -163,6 +165,11 @@ nav div {
 /* Add hover effect to items */
 .dropdown p:hover {
     background-color: #FFFFFF;  /* Add hover effect for dropdown items */
+}
+
+#langDropdownMenu{
+    width:fit-content;
+    position: absolute;
 }
 
 /***** END Header styling *****/
@@ -281,7 +288,6 @@ main.main-grid {
     background-color: #FFFFFF;
     min-height: 18vh;
     max-height: 18vh;
-    overflow: auto;
 }
 
 /* Section for date dropdown menu */
@@ -405,6 +411,8 @@ main.main-grid {
 .open-text.open .open-text-content {
     max-height: fit-content;
     padding: .5rem;
+    overflow: visible;
+    padding-left: 2rem;
 }
   
 /* Rotate arrow when open */
@@ -423,11 +431,45 @@ main.main-grid {
     border-bottom: 0.5vh solid #262524;
 }
 
+
 /* Keywords found in text */
 dfn{
     color: #262524;
-    background-color: #fdff32;
+    font-weight: bold;
+    transition: opacity 0.1s ease-in-out; /* Example: shorter duration */
+    opacity: 1;
 }
+.custom-tooltip {
+    position: relative;
+    cursor: help;
+    display: inline-block;
+  }
+  
+  .tooltip-text {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    transition: opacity 0.1s ease-in-out;
+    bottom: 125%; /* Position above the text */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    /* white-space: nowrap; */
+    min-width: 50%;
+    z-index: 50;
+    font-size: 0.75rem;
+    pointer-events: none;
+  }
+  
+  .custom-tooltip:hover .tooltip-text {
+    visibility: visible;
+    opacity: 1;
+  }
+  
+  
   
 /***** END Main Left Box styling *****/
 

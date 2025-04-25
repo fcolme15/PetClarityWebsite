@@ -109,10 +109,62 @@ const sampleCalendarEvents = [
 
 //End calendar
 
+//START Pet Selected Using Cookies
+function getCookie(name) {
+  const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+  return match ? match[2] : null;
+}
+
+function setCookie(name, value) {
+  document.cookie = `${name}=${value}; path=/`;
+}
+
+function setupDropdownProfileSwitch() {
+  document.querySelectorAll('#petDropdownMenu p').forEach(item => {
+    item.addEventListener('click', () => {
+      const selectedProfile = item.getAttribute('data-profile');
+      setCookie('selectedProfile', selectedProfile); // Save it
+      updateTitles();
+      closeAllDropdownsExcept();
+    });
+  });
+}
+
+//END Pet Selected Using Cookies
+
+//START Language change
+
+function updateTitles() {
+  const lang = getCookie('selectedLang') || 'English';
+  const profile = getCookie('selectedProfile') || 'Luna';
+  const langaugeSelected = document.getElementById('languageSelected');
+  const dogName = document.getElementById("petProfileName");
+
+    
+  if (langaugeSelected) langaugeSelected.innerHTML = lang;
+  if (dogName) dogName.innerHTML = profile;
+}
+
+
+function setupDropdownLanguageSwitch() {
+  document.querySelectorAll('#langDropdownMenu p').forEach(item => {
+    item.addEventListener('click', () => {
+      const selectedLang = item.getAttribute('data-lang');
+      setCookie('selectedLang', selectedLang); // Save it
+      updateTitles();             // Update content
+      closeAllDropdownsExcept();
+    });
+  });
+}
+//END Language change
+
 
 // Initialize all listeners when the DOM is done loading
 document.addEventListener('DOMContentLoaded', () => {
     initIconDropdowns(); // Initialize nav drop downs (change pet & language)
     initInteractiveCalendar('calendarContainer', sampleCalendarEvents); // Initialize the calendar
+    setupDropdownProfileSwitch();
+    setupDropdownLanguageSwitch();
+    updateTitles();   
 });
   

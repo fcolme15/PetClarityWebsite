@@ -22,11 +22,12 @@
       <div class="left-item">
         <div class="icon-container">
           <img src="./imgs/globeIcon.jpg" alt="icon" class="icon" />
-          <p class="icon-text">English</p>
-          <div class="dropdown" id="dropdownMenu">
-            <p>English</p>
-            <p>Spanish</p>
-            <p>French</p>
+          <p class="icon-text" id="languageSelected">English</p>
+          <div class="dropdown" id="langDropdownMenu">
+            <p data-lang="English">English</p>
+            <p data-lang="Spanish">Spanish</p>
+            <p data-lang="French">French</p>
+            <p data-lang="Portuguese">Portuguese</p>
           </div>
         </div> 
       </div>
@@ -35,7 +36,7 @@
       <div class="middle-item">
         <h1>PetClarity</h1>
         <div class="tabs">
-          <a href="indexEng.html" class="tab">Dashboard</a>
+          <a href="index.html" class="tab">Dashboard</a>
           <a href="calendar.html" class="tab">Calendar</a>
           <a href="chat.html" class="tab">Chat</a>
         </div>
@@ -44,11 +45,11 @@
       <div class="right-item">
         <div class="icon-container">
           <img src="./imgs/dogIcon.png" alt="icon" class="icon" />
-          <p class="icon-text">Luna</p>
-          <div class="dropdown" id="dropdownMenu">
-            <p>Luna</p>
-            <p>Tank</p>
-            <p>Bean</p>
+          <p class="icon-text" id="petProfileName">Luna</p>
+          <div class="dropdown" id="petDropdownMenu">
+            <p data-profile="Luna">Luna</p>
+            <p data-profile="Tank">Tank</p>
+            <p data-profile="Bean">Bean</p>
           </div>
         </div>
       </div>
@@ -69,11 +70,11 @@
               
               <div class="dropdown-container">
                 <label>Visit On</label>
-                <button class="dropbtn">01/15/25 <span class="arrow">&#9654;</span><br>Sprained Ankle</button>
+                <button class="dropbtn" id="visitSelected">01/15/25 <span class="arrow">&#9654;</span><br>Sprained Ankle</button>
                 <div class="dropdownMenu" id="dateDropdownMenu">
-                  <p>01/10/25<br>Wellness Check</p>
-                  <p>02/19/25<br>Swallowed Toy</p>
-                  <p>03/05/25<br>Anxiety</p>
+                  <p data-visit="SprainedAnkle">01/15/25<br>Sprained Ankle</p>
+                  <p data-visit="SwallowedToy">02/19/25<br>Swallowed Toy</p>
+                  <p data-visit="Anxiety">03/05/25<br>Anxiety</p>
                 </div>
               </div>
             </div>
@@ -92,17 +93,14 @@
               <span>Evaluation</span>
               <span class="arrow">&#9654;</span>
             </div>
-            <div class="open-text-content">
+            <div class="open-text-content" id="evaluationContent">
               <p>This is the evaluation content...</p>
-              <p>This is the evaluation content...</p>
-              <p>This is the evaluation content...</p>
-              <p>This is the <dfn title="Evaluation: the making of a judgment about the amount, number, or value of something; assessment">evaluation</dfn> content...</p>
-              <p>This is the evaluation content...</p>
-              <p>This is the evaluation content...</p>
-              <p>This is the evaluation content...</p>
-              <p>This is the evaluation content...</p>
-              <p>This is the evaluation content...</p>
-              <p>This is the evaluation content...</p>
+              <p>This is the 
+                <dfn class="custom-tooltip">medication
+                  <span class="tooltip-text">Medication: a substance used for medical treatment, especially a medicine or drug.</span>
+                </dfn> 
+                content...
+              </p>
               <p>This is the evaluation content...</p>
             </div>
           </div>
@@ -112,18 +110,14 @@
               <span>Medication</span>
               <span class="arrow">&#9654;</span>
             </div>
-            <div class="open-text-content">
+            <div class="open-text-content" id="medicationContent">
               <p>This is the medication content...</p>
-              <p>This is the medication content...</p>
-              <p>This is the <dfn title="Medication: a substance used for medical treatment, especially a medicine or drug.">medication</dfn> content...</p>
-              <p>This is the medication content...</p>
-              <p>This is the medication content...</p>
-              <p>This is the medication content...</p>
-              <p>This is the medication content...</p>
-              <p>This is the medication content...</p>
-              <p>This is the medication content...</p>
-              <p>This is the medication content...</p>
-              <p>This is the medication content...</p>
+              <p>This is the 
+                <dfn class="custom-tooltip">medication
+                  <span class="tooltip-text">Medication: a substance used for medical treatment, especially a medicine or drug.</span>
+                </dfn> 
+                content...
+              </p>
               <p>This is the medication content...</p>
             </div>
           </div>
@@ -133,17 +127,14 @@
               <span>Treatment</span>
               <span class="arrow">&#9654;</span>
             </div>
-            <div class="open-text-content">
+            <div class="open-text-content" id="treatmentContent">
               <p>This is the treatment content...</p>
-              <p>This is the treatment content...</p>
-              <p>This is the treatment content...</p>
-              <p>This is the treatment content...</p>
-              <p>This is the treatment content...</p>
-              <p>This is the treatment content...</p>
-              <p>This is the treatment content...</p>
-              <p>This is the <dfn title="Treatment: the manner in which someone behaves toward or deals with someone or something.">treatment</dfn> content...</p>
-              <p>This is the treatment content...</p>
-              <p>This is the treatment content...</p>
+              <p>This is the 
+                <dfn class="custom-tooltip">medication
+                  <span class="tooltip-text">Medication: a substance used for medical treatment, especially a medicine or drug.</span>
+                </dfn> 
+                content...
+              </p>
               <p>This is the treatment content...</p>
             </div>
           </div>
