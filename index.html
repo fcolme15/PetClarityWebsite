@@ -36,9 +36,9 @@
       <div class="middle-item">
         <h1>PetClarity</h1>
         <div class="tabs">
-          <a href="index.html" class="tab">Dashboard</a>
-          <a href="calendar.html" class="tab">Calendar</a>
-          <a href="chat.html" class="tab">Chat</a>
+          <a href="index.html" class="tab" id="dashboardText">Dashboard</a>
+          <a href="calendar.html" class="tab" id="calendarText">Calendar</a>
+          <a href="chat.html" class="tab" id="chatText">Chat</a>
         </div>
       </div>
 
@@ -66,10 +66,10 @@
           <div class="summary">
 
             <div class="summary_header">
-              <h2 >Visit Summary</h2>
+              <h2 id="summaryText">Visit Summary</h2>
               
               <div class="dropdown-container">
-                <label>Visit On</label>
+                <label id="visitOnText">Visit On</label>
                 <button class="dropbtn" id="visitSelected">01/15/25 <span class="arrow">&#9654;</span><br>Sprained Ankle</button>
                 <div class="dropdownMenu" id="dateDropdownMenu">
                   <p data-visit="SprainedAnkle">01/15/25<br>Sprained Ankle</p>
@@ -81,7 +81,7 @@
             
 
             <div id="dogSummary">
-              <span>Breed: Boxer</span>
+              <span id="breedText">Breed: Boxer</span>
               <span style="margin-left: 5rem">Age: 2 Years</span><br>
               <span>Weight: 61 Pounds</span>
               <span style="margin-left: 2.4rem">Birthday: 1/11/23</span><br>
@@ -90,7 +90,7 @@
   
           <div class="open-text">
             <div class="open-text-title" id="evalTab">
-              <span>Evaluation</span>
+              <span id="evaluationText">Evaluation</span>
               <span class="arrow">&#9654;</span>
             </div>
             <div class="open-text-content" id="evaluationContent">
@@ -107,7 +107,7 @@
         
           <div class="open-text">
             <div class="open-text-title" id="medTab">
-              <span>Medication</span>
+              <span id="medicationText">Medication</span>
               <span class="arrow">&#9654;</span>
             </div>
             <div class="open-text-content" id="medicationContent">
@@ -124,7 +124,7 @@
         
           <div class="open-text">
             <div class="open-text-title" id="treatTab">
-              <span>Treatment</span>
+              <span id="treatmentText">Treatment</span>
               <span class="arrow">&#9654;</span>
             </div>
             <div class="open-text-content" id="treatmentContent">
@@ -148,7 +148,7 @@
     <div class="right-box">
       <div class="top-box" id="topBox">
         <div class="top-Right-Title">
-          <h2 class="title">🗓️ Calendar View</h2>
+          <h2 class="title" id="calendarHeader">🗓️ Calendar View</h2>
           <button id="swapViewBtn" class="img-button"></button>
         </div>
         
@@ -172,14 +172,14 @@
           <div class="chat-users">
             <button id="toggleBtn"></button> 
             <div id="togglePadding"> </div>
-            <h3>Chat History</h3>
+            <h3 id="chatHistoryText">Chat History</h3>
             <div class="users-scroll" id="usersList">
             </div>
           </div>
       
           <div class="chat-panel">
             <div class="chat-header">
-              <h3>Chat</h3>
+              <h3 id="chatHeaderText">Chat</h3>
             </div>
       
             <div class="chat-window" id="chatWindow">

@@ -475,8 +475,76 @@ export const VISIT_SUMMARIES = {
             </ul>
           `
         }
-      }
-    
-    
+      }  
   };
-  
+
+  export const EXTRA_TEXT = {
+    English: {
+      summaryText: "Visit Summary",
+      evaluation: "Evaluation",
+      medication: "Medication",
+      treatment: "Treatment",
+      dashboard: "Dashboard",
+      calendar: "Calendar",
+      chat: "Chat",
+      calendarView: "Calendar View",
+      chatHistory: "Chat History",
+      visitOn: "Visit On",
+      breed: "Breed",
+      age: "Age",
+      weight: "Weight",
+      birthday: "Birthday",
+      askVetPlaceholder: "Ask your vet a question here..."
+    },
+    Spanish: {
+      summaryText: "Resumen de la visita",
+      evaluation: "Evaluación",
+      medication: "Medicamento",
+      treatment: "Tratamiento",
+      dashboard: "Panel de control",
+      calendar: "Calendario",
+      chat: "Chat",
+      calendarView: "Vista del calendario",
+      chatHistory: "Historial del chat",
+      visitOn: "Visita el",
+      breed: "Raza",
+      age: "Edad",
+      weight: "Peso",
+      birthday: "Cumpleaños",
+      askVetPlaceholder: "Hazle una pregunta a tu veterinario aquí..."
+    },
+    French: {
+      summaryText: "Résumé de la visite",
+      evaluation: "Évaluation",
+      medication: "Médicament",
+      treatment: "Traitement",
+      dashboard: "Tableau de bord",
+      calendar: "Calendrier",
+      chat: "Chat",
+      calendarView: "Vue du calendrier",
+      chatHistory: "Historique de chat",
+      visitOn: "Visite le",
+      breed: "Race",
+      age: "Âge",
+      weight: "Poids",
+      birthday: "Anniversaire",
+      askVetPlaceholder: "Posez une question à votre vétérinaire ici..."
+    },
+    Portuguese: {
+      summaryText: "Resumo da visita",
+      evaluation: "Avaliação",
+      medication: "Medicação",
+      treatment: "Tratamento",
+      dashboard: "Painel de controle",
+      calendar: "Calendário",
+      chat: "Chat",
+      calendarView: "Visualização do calendário",
+      chatHistory: "Histórico de chat",
+      visitOn: "Visita em",
+      breed: "Raça",
+      age: "Idade",
+      weight: "Peso",
+      birthday: "Aniversário",
+      askVetPlaceholder: "Faça uma pergunta ao seu veterinário aqui..."
+    }
+  };  

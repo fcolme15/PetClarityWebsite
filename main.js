@@ -1,5 +1,6 @@
 import {COMETCHAT_CONSTANTS} from "./const.js"
 import {VISIT_SUMMARIES} from "./visitSummaries.js"
+import {EXTRA_TEXT} from "./visitSummaries.js"
 
 const profiles = {
   Luna: {
@@ -441,7 +442,7 @@ function initLanguageSelection() {
     setCookie('selectedLang', profile);
   }
 
-  updateVisitSummary();             // Update content
+  updateVisitSummary(); // Update content
 }
 
 function updateVisitSummary() {
@@ -449,7 +450,7 @@ function updateVisitSummary() {
   const visit = getCookie('selectedVisit') || 'SprainedAnkle';
 
   const summaries = VISIT_SUMMARIES[lang][visit];
-  
+  const extraText = EXTRA_TEXT[lang]
 
   if (summaries) {
     const evaluationEl = document.getElementById('evaluationContent');
@@ -457,12 +458,52 @@ function updateVisitSummary() {
     const treatmentEl = document.getElementById('treatmentContent');
     const langaugeSelected = document.getElementById('languageSelected');
     const visitSelected = document.getElementById('visitSelected');
+    
+    const summaryTextEl = document.getElementById('summaryText');
+    const evaluationTextEl = document.getElementById('evaluationText');
+    const medicationTextEl = document.getElementById('medicationText');
+    const treatmentTextEl = document.getElementById('treatmentText');
+
+    const dashboardTextEl = document.getElementById('dashboardText');
+    const calendarTextEl = document.getElementById('calendarText');
+    const chatTextEl = document.getElementById('chatText');
+    const calendarHeaderEl = document.getElementById('calendarHeader');
+    const chatHistoryEl = document.getElementById('chatHistoryText');
+    const chatHeaderTextEl = document.getElementById('chatHeaderText');
+
+    /* doesn't work don't know why
+    const breedTextEl = document.getElementById('breedText');
+    const ageTextEl = document.getElementById('ageText');
+    const weightTextEl = document.getElementById('weightText');
+    const birthdayTextEl = document.getElementById('birthdayText');
+    */
+    const visitOnTextEl = document.getElementById('visitOnText');
+    const placeholderTextEl = document.getElementById('messageInput');
 
     if (evaluationEl) evaluationEl.innerHTML = summaries.evaluation;
     if (medicationEl) medicationEl.innerHTML = summaries.medication;
     if (treatmentEl) treatmentEl.innerHTML = summaries.treatment;
     if (langaugeSelected) langaugeSelected.innerHTML = lang;
     if (visitSelected) visitSelected.innerHTML = visit;
+
+    if(summaryTextEl) summaryTextEl.innerHTML = extraText.summaryText;
+    if(evaluationTextEl) evaluationTextEl.innerHTML = extraText.evaluation
+    if(medicationTextEl) medicationTextEl.innerHTML = extraText.medication
+    if(treatmentTextEl) treatmentTextEl.innerHTML = extraText.treatment
+
+    if(dashboardTextEl) dashboardTextEl.innerHTML = extraText.dashboard
+    if(calendarTextEl) calendarTextEl.innerHTML = extraText.calendar
+    if(chatTextEl) chatTextEl.innerHTML = extraText.chat
+    if(calendarHeaderEl) calendarHeaderEl.innerHTML = extraText.calendarView
+    if(chatHistoryEl) chatHistoryEl.innerHTML = extraText.chatHistory
+    if(chatHeaderTextEl) chatHeaderTextEl.innerHTML = extraText.chat
+
+    // if(breedTextEl) breedTextEl.innerHTML = extraText.breed
+    // if(ageTextEl) ageTextEl.innerHTML = extraText.age
+    // if(weightTextEl) weightTextEl.innerHTML = extraText.weight
+    // if(birthdayTextEl) birthdayTextEl.innerHTML = extraText.birthday
+    if(visitOnTextEl) visitOnTextEl.innerHTML = extraText.visitOn
+    if(placeholderTextEl) placeholderTextEl.placeholder = extraText.askVetPlaceholder
   }
 }
 
