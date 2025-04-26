@@ -1,3 +1,4 @@
+import {EXTRA_TEXT} from "./visitSummaries.js"
 
 //START Icon Dropdowns
 
@@ -140,9 +141,14 @@ function updateTitles() {
   const langaugeSelected = document.getElementById('languageSelected');
   const dogName = document.getElementById("petProfileName");
 
+  const extraText = EXTRA_TEXT[lang];
+  const dashboardTextEl = document.getElementById('dashboardText');
+  const calendarTextEl = document.getElementById('calendarText');
     
   if (langaugeSelected) langaugeSelected.innerHTML = lang;
   if (dogName) dogName.innerHTML = profile;
+  if(dashboardTextEl) dashboardTextEl.innerHTML = extraText.dashboard
+  if(calendarTextEl) calendarTextEl.innerHTML = extraText.calendar
 }
 
 

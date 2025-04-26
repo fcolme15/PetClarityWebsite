@@ -1,4 +1,5 @@
 import {COMETCHAT_CONSTANTS} from "./const.js"
+import {EXTRA_TEXT} from "./visitSummaries.js"
 
 //Initializes all icon dropdowns on the page
 function initIconDropdowns() {
@@ -227,9 +228,16 @@ function updateTitles() {
   const langaugeSelected = document.getElementById('languageSelected');
   const dogName = document.getElementById("petProfileName");
 
+  const extraText = EXTRA_TEXT[lang];
+  const dashboardTextEl = document.getElementById('dashboardText');
+  const calendarTextEl = document.getElementById('calendarText');
+  const chatHistoryEl = document.getElementById('chatHistoryText');
     
   if (langaugeSelected) langaugeSelected.innerHTML = lang;
   if (dogName) dogName.innerHTML = profile;
+  if(dashboardTextEl) dashboardTextEl.innerHTML = extraText.dashboard
+  if(calendarTextEl) calendarTextEl.innerHTML = extraText.calendar
+  if(chatHistoryEl) chatHistoryEl.innerHTML = extraText.chatHistory
 }
 
 
